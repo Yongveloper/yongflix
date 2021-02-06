@@ -11,10 +11,11 @@ React and ES6 by building a Popcorn Time Clone. (Movie and TV Shows Discovery Ap
 
 ## API Verbs
 
-- [ ] Now playing (Moive)
-- [ ] Upcoming (Moive)
-- [ ] Top Rated (TV)
-- [ ] Popular (TV, X)
-- [ ] Airing Today (TV)
-- [ ] TV Show Detail
-- [ ] Movie Detail
+- [x] Now playing (Moive)
+- [x] Upcoming (Moive)
+- [x] Top Rated (TV)
+- [x] Popular (TV, X)
+- [x] Airing Today (TV)
+- [x] TV Show Detail
+- [x] Movie Detail
+- [x] Search (Moive, TV)
