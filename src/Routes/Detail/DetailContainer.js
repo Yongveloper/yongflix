@@ -35,7 +35,6 @@ class DetailContainer extends React.Component {
       } else {
         ({ data: result } = await tvApi.showDetail(parsedId));
       }
-      console.log(result);
     } catch {
       this.setState({ error: '검색결과를 찾지 못했습니다.' });
     } finally {
