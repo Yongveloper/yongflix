@@ -11,11 +11,21 @@ class SearchContainer extends React.Component {
     error: null,
   };
 
-  handleSubmit = () => {
+  handleSubmit = (event) => {
+    event.preventDefault();
     const { searchTerm } = this.state;
     if (searchTerm !== '') {
       this.searchByterm();
     }
+  };
+
+  upadateTerm = (event) => {
+    const {
+      target: { value },
+    } = event;
+    this.setState({
+      searchTerm: value,
+    });
   };
 
   searchByterm = async () => {
@@ -49,6 +59,7 @@ class SearchContainer extends React.Component {
         error={error}
         searchTerm={searchTerm}
         handleSubmit={this.handleSubmit}
+        upadateTerm={this.upadateTerm}
       />
     );
   }
