@@ -51,7 +51,7 @@ const SearchPresenter = ({
         {tvResults && tvResults.length > 0 && (
           <Section title="TV 검색 결과">
             {tvResults.map((show) => (
-              <span key={show.id}>{show.title}</span>
+              <span key={show.id}>{show.name}</span>
             ))}
           </Section>
         )}
