@@ -39,6 +39,34 @@ const Cover = styled.div`
   height: 100%;
   border-radius: 5px;
 `;
+
+const Data = styled.div`
+  width: 70%;
+  margin-left: 10px;
+`;
+
+const Title = styled.h3`
+  font-size: 32px;
+  margin-bottom: 10px;
+`;
+
+const Item = styled.span``;
+
+const ItemContainer = styled.div`
+  margin: 20px 0;
+`;
+
+const Divider = styled.span`
+  margin: 0 10px;
+`;
+
+const Overview = styled.p`
+  font-size: 12px;
+  opacity: 0.7;
+  line-height: 1.5;
+  width: 50%;
+`;
+
 const DetailPresenter = ({ result, loading, error }) =>
   loading ? (
     <Loader />
@@ -55,6 +83,32 @@ const DetailPresenter = ({ result, loading, error }) =>
               : require('../../assets/noPosterSmall.png').default
           }
         />
+        <Data>
+          <Title>{result.title ? result.title : result.name}</Title>
+          <ItemContainer>
+            <Item>
+              {result.release_date
+                ? result.release_date.substring(0, 4)
+                : result.first_air_date.substring(0, 4)}
+            </Item>
+            <Divider>∙</Divider>
+            <Item>
+              {result.runtime ? result.runtime : result.episode_run_time[0]}분
+            </Item>
+            <Divider>∙</Divider>
+            <Item>
+              {result.genres &&
+                result.genres.map((genre, index) =>
+                  index === result.genres.length - 1
+                    ? genre.name
+                    : `${genre.name} / `
+                )}
+            </Item>
+          </ItemContainer>
+          <Overview>
+            {result.overview ? result.overview : '등록된 소개글이 없습니다.'}
+          </Overview>
+        </Data>
       </Content>
     </Container>
   );
