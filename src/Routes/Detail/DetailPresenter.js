@@ -66,7 +66,7 @@ const Imdb = styled.a`
   border-radius: 5px;
   padding: 5px;
   &:hover {
-    opacity: 0.6;
+    opacity: 0.7;
   }
   transition: opacity 0.1s linear;
 `;
@@ -90,6 +90,13 @@ const Overview = styled.p`
   opacity: 0.7;
   line-height: 1.5;
   width: 50%;
+`;
+
+const VideoContainer = styled.div``;
+
+const Iframe = styled.iframe`
+  width: 640px;
+  height: 360px;
 `;
 
 const DetailPresenter = ({ result, external, loading, error }) =>
@@ -132,7 +139,7 @@ const DetailPresenter = ({ result, external, loading, error }) =>
             </Imdb>
           </TitleContainer>
 
-          <Subtitle>{result.tagline ? result.tagline : null}</Subtitle>
+          <Subtitle>{result.tagline && result.tagline}</Subtitle>
           <ItemContainer>
             <Item>
               {result.release_date
@@ -150,16 +157,25 @@ const DetailPresenter = ({ result, external, loading, error }) =>
                     : `${genre.name} / `
                 )}
             </Item>
-            {result.production_countries[0] ? (
+            {result.production_countries[0] && (
               <>
                 <Divider>|</Divider>
                 <Item>{result.production_countries[0].name}</Item>
               </>
-            ) : null}
+            )}
           </ItemContainer>
           <Overview>
             {result.overview ? result.overview : '등록된 소개글이 없습니다.'}
           </Overview>
+          <VideoContainer>
+            {result.videos.results &&
+              result.videos.results.map((video) => (
+                <Iframe
+                  key={video.id}
+                  src={`https://www.youtube.com/embed/${video.key}`}
+                ></Iframe>
+              ))}
+          </VideoContainer>
         </Data>
       </Content>
     </Container>
