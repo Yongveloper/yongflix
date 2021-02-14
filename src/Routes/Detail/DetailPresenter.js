@@ -47,9 +47,28 @@ const Data = styled.div`
   margin-left: 10px;
 `;
 
+const TitleContainer = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+`;
+
 const Title = styled.h3`
   font-size: 32px;
-  margin-bottom: 10px;
+`;
+
+const Imdb = styled.a`
+  margin-left: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  background-color: #fcd700;
+  color: rgb(20, 20, 20, 1);
+  border-radius: 5px;
+  padding: 5px;
+  &:hover {
+    opacity: 0.6;
+  }
+  transition: opacity 0.1s linear;
 `;
 
 const Subtitle = styled.h4`
@@ -67,13 +86,13 @@ const Divider = styled.span`
 `;
 
 const Overview = styled.p`
-  font-size: 12px;
+  font-size: 15px;
   opacity: 0.7;
   line-height: 1.5;
   width: 50%;
 `;
 
-const DetailPresenter = ({ result, loading, error }) =>
+const DetailPresenter = ({ result, external, loading, error }) =>
   loading ? (
     <>
       <Helmet>
@@ -103,7 +122,16 @@ const DetailPresenter = ({ result, loading, error }) =>
           }
         />
         <Data>
-          <Title>{result.title ? result.title : result.name}</Title>
+          <TitleContainer>
+            <Title>{result.title ? result.title : result.name}</Title>
+            <Imdb
+              href={`https://www.imdb.com/title/${external.imdb_id}`}
+              target="_blank"
+            >
+              IMDB
+            </Imdb>
+          </TitleContainer>
+
           <Subtitle>{result.tagline ? result.tagline : null}</Subtitle>
           <ItemContainer>
             <Item>
@@ -111,9 +139,9 @@ const DetailPresenter = ({ result, loading, error }) =>
                 ? result.release_date.substring(0, 4)
                 : result.first_air_date.substring(0, 4)}
             </Item>
-            <Divider>∙</Divider>
+            <Divider>|</Divider>
             <Item>{result.runtime || result.episode_run_time}분</Item>
-            <Divider>∙</Divider>
+            <Divider>|</Divider>
             <Item>
               {result.genres &&
                 result.genres.map((genre, index) =>
@@ -124,7 +152,7 @@ const DetailPresenter = ({ result, loading, error }) =>
             </Item>
             {result.production_countries[0] ? (
               <>
-                <Divider>∙</Divider>
+                <Divider>|</Divider>
                 <Item>{result.production_countries[0].name}</Item>
               </>
             ) : null}
