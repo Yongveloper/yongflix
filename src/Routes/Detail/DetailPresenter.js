@@ -52,6 +52,10 @@ const Title = styled.h3`
   margin-bottom: 10px;
 `;
 
+const Subtitle = styled.h4`
+  font-size: 15px;
+`;
+
 const Item = styled.span``;
 
 const ItemContainer = styled.div`
@@ -100,6 +104,7 @@ const DetailPresenter = ({ result, loading, error }) =>
         />
         <Data>
           <Title>{result.title ? result.title : result.name}</Title>
+          <Subtitle>{result.tagline ? result.tagline : null}</Subtitle>
           <ItemContainer>
             <Item>
               {result.release_date
@@ -107,9 +112,7 @@ const DetailPresenter = ({ result, loading, error }) =>
                 : result.first_air_date.substring(0, 4)}
             </Item>
             <Divider>∙</Divider>
-            <Item>
-              {result.runtime ? result.runtime : result.episode_run_time[0]}분
-            </Item>
+            <Item>{result.runtime || result.episode_run_time}분</Item>
             <Divider>∙</Divider>
             <Item>
               {result.genres &&
