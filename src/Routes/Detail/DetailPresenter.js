@@ -122,6 +122,12 @@ const DetailPresenter = ({ result, loading, error }) =>
                     : `${genre.name} / `
                 )}
             </Item>
+            {result.production_countries[0] ? (
+              <>
+                <Divider>∙</Divider>
+                <Item>{result.production_countries[0].name}</Item>
+              </>
+            ) : null}
           </ItemContainer>
           <Overview>
             {result.overview ? result.overview : '등록된 소개글이 없습니다.'}
