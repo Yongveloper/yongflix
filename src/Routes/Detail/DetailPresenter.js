@@ -5,6 +5,8 @@ import Helmet from 'react-helmet';
 import Loader from 'Components/Loader';
 import Message from 'Components/Message';
 
+import Slider from 'react-slick';
+
 const Container = styled.div`
   height: calc(100vh - 50px);
   width: 100%;
@@ -33,9 +35,8 @@ const Content = styled.div`
   height: 100%;
 `;
 
-const Cover = styled.div`
+const Cover = styled.img`
   width: 30%;
-  background-image: url(${(props) => props.bgImage});
   background-position: center center;
   background-size: cover;
   height: 100%;
@@ -92,14 +93,52 @@ const Overview = styled.p`
   width: 50%;
 `;
 
-const VideoContainer = styled.div``;
+const settings = {
+  dots: true,
+  infinite: false,
+  speed: 500,
+  slidesToShow: 2,
+  slidesToScroll: 1,
+};
 
+const VideoContainer = styled.div`
+  /* width: 480px; */
+  height: 300px;
+  margin: 0 16px;
+`;
 const Iframe = styled.iframe`
-  width: 640px;
-  height: 360px;
+  width: 450px;
+  height: 300px;
 `;
 
-const DetailPresenter = ({ result, external, loading, error }) =>
+const ProductionContainer = styled.div`
+  margin-top: 38px;
+`;
+
+const ProductionSettings = {
+  dots: false,
+  infinite: false,
+  speed: 500,
+  slidesToShow: 4,
+  slidesToScroll: 4,
+};
+
+const Production = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const ProductionImage = styled.img`
+  width: 150px;
+  height: 200px;
+`;
+
+const CreditsContainer = styled.div`
+  margin-top: 38px;
+`;
+
+const DetailPresenter = ({ result, external, credits, loading, error }) =>
   loading ? (
     <>
       <Helmet>
@@ -122,7 +161,7 @@ const DetailPresenter = ({ result, external, loading, error }) =>
       />
       <Content>
         <Cover
-          bgImage={
+          src={
             result.poster_path
               ? `https://image.tmdb.org/t/p/original${result.poster_path}`
               : require('../../assets/noPosterSmall.png').default
@@ -167,15 +206,66 @@ const DetailPresenter = ({ result, external, loading, error }) =>
           <Overview>
             {result.overview ? result.overview : '등록된 소개글이 없습니다.'}
           </Overview>
-          <VideoContainer>
-            {result.videos.results &&
-              result.videos.results.map((video) => (
-                <Iframe
-                  key={video.id}
-                  src={`https://www.youtube.com/embed/${video.key}`}
-                ></Iframe>
-              ))}
-          </VideoContainer>
+          {result.videos.results && result.videos.results.length > 0 && (
+            <VideoContainer>
+              관련 영상
+              <Slider {...settings}>
+                {result.videos.results.map((video) => (
+                  <div
+                    style={{
+                      width: '480px',
+                      display: 'flex',
+                      justifyContent: 'center',
+                    }}
+                  >
+                    <Iframe
+                      key={video.id}
+                      src={`https://www.youtube.com/embed/${video.key}`}
+                    ></Iframe>
+                  </div>
+                ))}
+              </Slider>
+            </VideoContainer>
+          )}
+          {result.production_companies &&
+            result.production_companies.length > 0 && (
+              <ProductionContainer>
+                <Slider {...ProductionSettings}>
+                  {result.production_companies.map((company) => (
+                    <Production>
+                      <ProductionImage
+                        src={
+                          company.logo_path
+                            ? `https://image.tmdb.org/t/p/original${company.logo_path}`
+                            : require('../../assets/noPosterSmall.png').default
+                        }
+                      />
+                      <Item>{company.name}</Item>
+                    </Production>
+                  ))}
+                </Slider>
+              </ProductionContainer>
+            )}
+          {credits.cast && credits.cast.length > 0 && (
+            <CreditsContainer>
+              <Slider {...ProductionSettings}>
+                {credits.cast.map((cast) => (
+                  <Production>
+                    <ProductionImage
+                      src={
+                        cast.profile_path
+                          ? `https://image.tmdb.org/t/p/original${cast.profile_path}`
+                          : require('../../assets/noPosterSmall.png').default
+                      }
+                    />
+                    <Item>{cast.name}</Item>
+                    <br />
+                    <Item>{cast.character}</Item>
+                  </Production>
+                ))}
+              </Slider>
+            </CreditsContainer>
+          )}
         </Data>
       </Content>
     </Container>
@@ -183,6 +273,8 @@ const DetailPresenter = ({ result, external, loading, error }) =>
 
 DetailPresenter.propTypes = {
   result: PropTypes.object,
+  external: PropTypes.object,
+  credits: PropTypes.object,
   loading: PropTypes.bool.isRequired,
   error: PropTypes.string,
 };
