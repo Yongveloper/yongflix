@@ -5,11 +5,17 @@ import Slider from 'react-slick';
 
 const Item = styled.span``;
 
-const ProductionContainer = styled.div`
-  margin-top: 38px;
+const Title = styled.div`
+  font-size: 16px;
+  font-weight: 600;
+  margin-left: 10px;
+  margin-bottom: 20px;
+  + div {
+    margin-bottom: 20px;
+  }
 `;
 
-const ProductionSettings = {
+const settings = {
   dots: false,
   infinite: false,
   speed: 500,
@@ -17,26 +23,43 @@ const ProductionSettings = {
   slidesToScroll: 4,
 };
 
-const Production = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+const StyledSlider = styled(Slider)`
+  .slick-track {
+    display: flex;
+    align-items: center;
+  }
+
+  .slick-slide div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 `;
+
+// const Production = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+// `;
 
 const ProductionImage = styled.img`
-  width: 120px;
-  height: 200px;
+  width: 220px;
+  height: 60px;
 `;
 
-const CreditsContainer = styled.div``;
+const PerformerImage = styled.img`
+  width: 120px;
+  height: 150px;
+`;
 
 const Credits = ({ result, credits }) => (
   <>
     {result.production_companies && result.production_companies.length > 0 && (
-      <ProductionContainer>
-        <Slider {...ProductionSettings}>
+      <>
+        <Title>제작</Title>
+        <StyledSlider {...settings}>
           {result.production_companies.map((company) => (
-            <Production>
+            <>
               <ProductionImage
                 src={
                   company.logo_path
@@ -45,17 +68,18 @@ const Credits = ({ result, credits }) => (
                 }
               />
               <Item>{company.name}</Item>
-            </Production>
+            </>
           ))}
-        </Slider>
-      </ProductionContainer>
+        </StyledSlider>
+      </>
     )}
     {credits.cast && credits.cast.length > 0 && (
-      <CreditsContainer>
-        <Slider {...ProductionSettings}>
+      <>
+        <Title>출연</Title>
+        <StyledSlider {...settings}>
           {credits.cast.map((cast) => (
-            <Production>
-              <ProductionImage
+            <>
+              <PerformerImage
                 src={
                   cast.profile_path
                     ? `https://image.tmdb.org/t/p/original${cast.profile_path}`
@@ -65,10 +89,10 @@ const Credits = ({ result, credits }) => (
               <Item>{cast.name}</Item>
               <br />
               <Item>{cast.character}</Item>
-            </Production>
+            </>
           ))}
-        </Slider>
-      </CreditsContainer>
+        </StyledSlider>
+      </>
     )}
   </>
 );

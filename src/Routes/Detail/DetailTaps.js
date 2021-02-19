@@ -16,19 +16,20 @@ const Li = styled.li`
   cursor: pointer;
   background-color: ${(props) =>
     props.current ? 'rgba(0, 0, 0, 0.4)' : 'none'};
-  border-top-left-radius: ${(props) => (props.current ? '10px' : 'none')};
-  border-top-right-radius: ${(props) => (props.current ? '10px' : 'none')};
+  border-top-left-radius: ${(props) => (props.current !== 0 ? '10px' : 'none')};
+  border-top-right-radius: ${(props) =>
+    props.current !== 0 ? '10px' : 'none'};
 `;
 
 const ContentContainer = styled.div`
   width: 100%;
   max-width: 100%;
-  height: 70%;
+  height: 79%;
   background-color: rgba(0, 0, 0, 0.4);
-  padding: 20px;
+  padding: ${(props) => (props.current === 0 ? '20px 25px;' : '20px 45px;')};
   overflow: auto;
   border-radius: 10px;
-  border-top-left-radius: ${(props) => (props.current ? '0px' : '10px')};
+  border-top-left-radius: ${(props) => (props.current === 0 ? '0px' : '10px')};
   ::-webkit-scrollbar {
     width: 20px;
   }
@@ -76,7 +77,7 @@ const DetailTaps = ({ result, credits }) => {
           {tabs[2]}
         </Li>
       </Ul>
-      <ContentContainer current={currentTap === 0}>
+      <ContentContainer current={currentTap}>
         {currentTap === 0 && <BasicInfo result={result} />}
         {currentTap === 1 && <Credits result={result} credits={credits} />}
         {currentTap === 2 && <Video result={result} />}

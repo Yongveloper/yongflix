@@ -7,13 +7,21 @@ const Container = styled.div`
   font-size: 12px;
 `;
 
-const Image = styled.div`
-  background-image: url(${(props) => props.bgUrl});
-  height: 180px;
+const Image = styled.img`
+  /* background-image: url(${(props) => props.bgUrl}); */
+  width: 180px;
+  height: 260px;
   background-size: cover;
   border-radius: 4px;
   background-position: center center;
   transition: opacity 0.1s linear;
+`;
+
+const DetailText = styled.span`
+  position: absolute;
+  opacity: 0;
+  top: 50%;
+  left: 50;
 `;
 
 const Rating = styled.span`
@@ -28,10 +36,10 @@ const ImageContainer = styled.div`
   margin-bottom: 5px;
   position: relative;
   &: hover {
-    ${Image} {
+    ${Image},${DetailText} {
       opacity: 0.3;
     }
-    ${Rating} {
+    ${Rating},${DetailText} {
       opacity: 1;
     }
   } ;
@@ -52,12 +60,13 @@ const Poster = ({ id, imageUrl, title, rating, year, isMovie = false }) => (
     <Container>
       <ImageContainer>
         <Image
-          bgUrl={
+          src={
             imageUrl
               ? `https://image.tmdb.org/t/p/w300${imageUrl}`
               : require('../assets/noPosterSmall.png').default
           }
         />
+        <DetailText>상세 보기</DetailText>
         <Rating>
           <span role="img" aria-label="rating">
             ⭐

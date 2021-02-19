@@ -31,7 +31,7 @@ const Content = styled.div`
   width: 100%;
   position: relative;
   z-index: 1;
-  height: 100%;
+  height: calc(100vh - 130px);
 `;
 
 const Cover = styled.img`

@@ -27,8 +27,13 @@ const BasicInfo = ({ result }) => (
           : result.first_air_date.substring(0, 4)}
       </Item>
       <Divider>|</Divider>
-      <Item>{result.runtime || result.episode_run_time}분</Item>
-      <Divider>|</Divider>
+      {result.runtime || result.episode_run_time ? (
+        <>
+          <Item>{result.runtime || result.episode_run_time}분</Item>
+          <Divider>|</Divider>
+        </>
+      ) : null}
+
       <Item>
         {result.genres &&
           result.genres.map((genre, index) =>
