@@ -16,7 +16,7 @@ const Title = styled.div`
 `;
 
 const settings = {
-  dots: true,
+  dots: false,
   infinite: false,
   speed: 500,
   slidesToShow: 7,
@@ -27,7 +27,6 @@ const settings = {
       settings: {
         slidesToShow: 5,
         slidesToScroll: 5,
-        dots: true,
       },
     },
     {
@@ -35,7 +34,13 @@ const settings = {
       settings: {
         slidesToShow: 4,
         slidesToScroll: 4,
-        dots: true,
+      },
+    },
+    {
+      breakpoint: 800,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
       },
     },
     {

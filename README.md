@@ -27,3 +27,7 @@ React and ES6 by building a Popcorn Time Clone. (Movie and TV Shows Discovery Ap
 - [ ] Collections Link
 - [ ] /collections Route
 - [ ] On TV Show, show seasons and creators
+
+# Preview:
+
+Try it on [netlify](https://xenodochial-euclid-847dc4.netlify.app/)
