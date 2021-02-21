@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.js": "/yongflix/static/js/main.aab1144c.chunk.js",
+    "main.js.map": "/yongflix/static/js/main.aab1144c.chunk.js.map",
+    "runtime-main.js": "/yongflix/static/js/runtime-main.a65dbb2a.js",
+    "runtime-main.js.map": "/yongflix/static/js/runtime-main.a65dbb2a.js.map",
+    "static/css/2.5d36d202.chunk.css": "/yongflix/static/css/2.5d36d202.chunk.css",
+    "static/js/2.030557b7.chunk.js": "/yongflix/static/js/2.030557b7.chunk.js",
+    "static/js/2.030557b7.chunk.js.map": "/yongflix/static/js/2.030557b7.chunk.js.map",
+    "index.html": "/yongflix/index.html",
+    "static/css/2.5d36d202.chunk.css.map": "/yongflix/static/css/2.5d36d202.chunk.css.map",
+    "static/js/2.030557b7.chunk.js.LICENSE.txt": "/yongflix/static/js/2.030557b7.chunk.js.LICENSE.txt",
+    "static/media/slick-theme.css": "/yongflix/static/media/slick.c94f7671.ttf"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a65dbb2a.js",
+    "static/css/2.5d36d202.chunk.css",
+    "static/js/2.030557b7.chunk.js",
+    "static/js/main.aab1144c.chunk.js"
+  ]
+}
