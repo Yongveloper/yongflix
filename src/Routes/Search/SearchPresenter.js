@@ -47,7 +47,7 @@ const SearchPresenter = ({
     ) : (
       <>
         {movieResults && movieResults.length > 0 && (
-          <Section title="영화 검색 결과">
+          <Section title={`영화 검색 결과: ${movieResults.length}건`}>
             {movieResults.map((movie) => (
               <Poster
                 key={movie.id}
@@ -62,7 +62,7 @@ const SearchPresenter = ({
           </Section>
         )}
         {tvResults && tvResults.length > 0 && (
-          <Section title="TV 검색 결과">
+          <Section title={`TV 검색 결과: ${tvResults.length}건`}>
             {tvResults.map((show) => (
               <Poster
                 key={show.id}
