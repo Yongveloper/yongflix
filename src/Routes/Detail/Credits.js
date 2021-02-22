@@ -36,18 +36,17 @@ const StyledSlider = styled(Slider)`
   }
 `;
 
-// const Production = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-// `;
+const CompaineContainer = styled.div``;
 
-const ProductionImage = styled.img`
+const CompanyImage = styled.img`
   width: 220px;
   height: 60px;
+  background-color: #fff;
 `;
 
-const PerformerImage = styled.img`
+const CastContainer = styled.div``;
+
+const CastImage = styled.img`
   width: 120px;
   height: 150px;
 `;
@@ -55,12 +54,12 @@ const PerformerImage = styled.img`
 const Credits = ({ result, credits }) => (
   <>
     {result.production_companies && result.production_companies.length > 0 && (
-      <>
+      <CompaineContainer>
         <Title>제작</Title>
         <StyledSlider {...settings}>
           {result.production_companies.map((company) => (
             <>
-              <ProductionImage
+              <CompanyImage
                 src={
                   company.logo_path
                     ? `https://image.tmdb.org/t/p/original${company.logo_path}`
@@ -71,15 +70,15 @@ const Credits = ({ result, credits }) => (
             </>
           ))}
         </StyledSlider>
-      </>
+      </CompaineContainer>
     )}
     {credits.cast && credits.cast.length > 0 && (
-      <>
+      <CastContainer>
         <Title>출연</Title>
         <StyledSlider {...settings}>
           {credits.cast.map((cast) => (
             <>
-              <PerformerImage
+              <CastImage
                 src={
                   cast.profile_path
                     ? `https://image.tmdb.org/t/p/original${cast.profile_path}`
@@ -92,7 +91,7 @@ const Credits = ({ result, credits }) => (
             </>
           ))}
         </StyledSlider>
-      </>
+      </CastContainer>
     )}
   </>
 );

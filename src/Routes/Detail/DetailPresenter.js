@@ -114,9 +114,7 @@ const DetailPresenter = ({ result, external, credits, loading, error }) =>
               IMDB
             </Imdb>
           </TitleContainer>
-
           <Subtitle>{result.tagline && result.tagline}</Subtitle>
-
           <DetaileTaps result={result} credits={credits} />
         </Data>
       </Content>

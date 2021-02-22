@@ -22,6 +22,9 @@ const Li = styled.li`
 `;
 
 const ContentContainer = styled.div`
+  display: ${(props) => (props.current === 1 ? 'flex' : 'block')};
+  flex-direction: column;
+  justify-content: center;
   width: 100%;
   max-width: 100%;
   height: 79%;
