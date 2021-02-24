@@ -41,6 +41,8 @@ const CompaineContainer = styled.div``;
 const CompanyImage = styled.img`
   width: 220px;
   height: 60px;
+  border-radius: 8px;
+  padding: 10px;
   background-color: #fff;
 `;
 
