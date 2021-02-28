@@ -77,7 +77,7 @@ const Poster = ({ id, imageUrl, title, rating, year, isMovie = false }) => (
       <Title>
         {title.length > 12 ? `${title.substring(0, 12)}...` : title}
       </Title>
-      <Year>{year}</Year>
+      <Year>{year ? year.substring(0, 4) : '연도 정보 없음'}</Year>
     </Container>
   </Link>
 );
