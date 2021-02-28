@@ -1,36 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import SearchPresenter from './SearchPresenter';
 import { moviesApi, tvApi } from 'api';
 
-class SearchContainer extends React.Component {
-  state = {
-    movieResults: null,
-    tvResults: null,
-    searchTerm: '',
-    loading: false,
-    error: null,
-  };
+const SearchContainer = () => {
+  const [movieResults, setMovieResults] = useState(null);
+  const [tvResults, setTvResults] = useState(null);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-  handleSubmit = (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
-    const { searchTerm } = this.state;
     if (searchTerm !== '') {
-      this.searchByterm();
+      searchByterm();
     }
   };
 
-  upadateTerm = (event) => {
+  const upadateTerm = (event) => {
     const {
       target: { value },
     } = event;
-    this.setState({
-      searchTerm: value,
-    });
+    setSearchTerm(value);
   };
 
-  searchByterm = async () => {
-    const { searchTerm } = this.state;
-    this.setState({ loading: true });
+  const searchByterm = async () => {
+    setLoading(true);
     try {
       const {
         data: { results: movieResults },
@@ -38,31 +32,26 @@ class SearchContainer extends React.Component {
       const {
         data: { results: tvResults },
       } = await tvApi.search(searchTerm);
-      this.setState({
-        movieResults,
-        tvResults,
-      });
+      setMovieResults(movieResults);
+      setTvResults(tvResults);
     } catch {
-      this.setState({ error: '검색 결과가 없습니다.' });
+      setError('검색 결과가 없습니다.');
     } finally {
-      this.setState({ loading: false });
+      setLoading(false);
     }
   };
 
-  render() {
-    const { movieResults, tvResults, searchTerm, loading, error } = this.state;
-    return (
-      <SearchPresenter
-        movieResults={movieResults}
-        tvResults={tvResults}
-        loading={loading}
-        error={error}
-        searchTerm={searchTerm}
-        handleSubmit={this.handleSubmit}
-        upadateTerm={this.upadateTerm}
-      />
-    );
-  }
-}
+  return (
+    <SearchPresenter
+      movieResults={movieResults}
+      tvResults={tvResults}
+      loading={loading}
+      error={error}
+      searchTerm={searchTerm}
+      handleSubmit={handleSubmit}
+      upadateTerm={upadateTerm}
+    />
+  );
+};
 
 export default SearchContainer;
