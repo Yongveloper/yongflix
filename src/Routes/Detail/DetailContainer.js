@@ -11,6 +11,8 @@ class DetailContainer extends React.Component {
     } = props;
     this.state = {
       result: null,
+      external: null,
+      credits: null,
       error: null,
       loading: true,
       isMovie: pathname.includes('/movie/'),
@@ -51,8 +53,7 @@ class DetailContainer extends React.Component {
 
   render() {
     const { result, external, credits, error, loading } = this.state;
-    console.log(result);
-    console.log(credits);
+
     return (
       <DetailPresenter
         result={result}
@@ -64,5 +65,4 @@ class DetailContainer extends React.Component {
     );
   }
 }
-
 export default DetailContainer;

@@ -15,6 +15,7 @@ const Image = styled.img`
   border-radius: 4px;
   background-position: center center;
   transition: opacity 0.1s linear;
+  transition: transform 0.2s ease-in-out;
 `;
 
 const DetailText = styled.span`
@@ -33,9 +34,13 @@ const Rating = styled.span`
 `;
 
 const ImageContainer = styled.div`
+  overflow: hidden;
   margin-bottom: 5px;
   position: relative;
   &: hover {
+    ${Image} {
+      transform: scale(1.1);
+    }
     ${Image},${DetailText} {
       opacity: 0.3;
     }
