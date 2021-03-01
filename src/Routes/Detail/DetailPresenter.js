@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Helmet from 'react-helmet';
 import Loader from 'Components/Loader';
 import Message from 'Components/Message';
-import DetaileTaps from 'Routes/Detail/DetailTaps';
+import DetaileTabs from 'Routes/Detail/DetailTabs';
 
 const Container = styled.div`
   height: calc(100vh - 50px);
@@ -126,7 +126,7 @@ const DetailPresenter = ({ result, external, credits, loading, error }) =>
             </Imdb>
           </TitleContainer>
           <Subtitle>{result.tagline && result.tagline}</Subtitle>
-          <DetaileTaps result={result} credits={credits} />
+          <DetaileTabs result={result} credits={credits} />
         </Data>
       </Content>
     </Container>
