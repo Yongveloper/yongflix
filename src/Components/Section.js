@@ -7,6 +7,7 @@ const Container = styled.div`
   :not(:last-child) {
     margin-bottom: 50px;
   }
+  padding: 0 10px;
 `;
 
 const Title = styled.div`
@@ -74,6 +75,7 @@ const StyledSlider = styled(Slider)`
     justify-content: center;
   }
 `;
+
 const Section = ({ title, children }) => (
   <Container>
     <Title>{title}</Title>
