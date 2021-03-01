@@ -35,7 +35,6 @@ const Content = styled.div`
 `;
 
 const Cover = styled.img`
-  width: 30%;
   background-position: center center;
   background-size: cover;
   height: 100%;
