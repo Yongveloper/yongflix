@@ -32,6 +32,10 @@ const Content = styled.div`
   position: relative;
   z-index: 1;
   height: calc(100vh - 130px);
+  @media screen and (max-width: 1024px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 const Cover = styled.img`
@@ -44,6 +48,9 @@ const Cover = styled.img`
 const Data = styled.div`
   width: 60%;
   margin-left: 10px;
+  @media screen and (max-width: 1024px) {
+    width: 100%;
+  }
 `;
 
 const TitleContainer = styled.div`
