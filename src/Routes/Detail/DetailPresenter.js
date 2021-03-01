@@ -43,7 +43,7 @@ const Cover = styled.img`
 `;
 
 const Data = styled.div`
-  width: 70%;
+  width: 60%;
   margin-left: 10px;
 `;
 
