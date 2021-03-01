@@ -19,6 +19,9 @@ const Li = styled.li`
   border-top-left-radius: ${(props) => (props.current !== 0 ? '10px' : 'none')};
   border-top-right-radius: ${(props) =>
     props.current !== 0 ? '10px' : 'none'};
+  @media screen and (max-width: 479px) {
+    font-size: 16px;
+  }
 `;
 
 const ContentContainer = styled.div`

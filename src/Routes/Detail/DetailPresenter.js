@@ -50,6 +50,8 @@ const Data = styled.div`
   margin-left: 10px;
   @media screen and (max-width: 1024px) {
     width: 100%;
+    margin-top: 10px;
+    text-align: center;
   }
 `;
 
@@ -57,6 +59,9 @@ const TitleContainer = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 10px;
+  @media screen and (max-width: 1024px) {
+    justify-content: center;
+  }
 `;
 
 const Title = styled.h3`
