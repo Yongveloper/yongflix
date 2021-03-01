@@ -9,27 +9,28 @@ const HomeContainer = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    async function fetchMovieData() {
-      try {
-        const {
-          data: { results: nowPlaying },
-        } = await moviesApi.nowPlaying();
-        const {
-          data: { results: upcoming },
-        } = await moviesApi.upcoming();
-        const {
-          data: { results: popular },
-        } = await moviesApi.popular();
-        setNowPlaying(nowPlaying);
-        setUpcoming(upcoming);
-        setPopular(popular);
-      } catch {
-        setError('영화의 정보를 찾을 수 없습니다.');
-      } finally {
-        setLoading(false);
-      }
+  const fetchMovieData = async () => {
+    try {
+      const {
+        data: { results: nowPlaying },
+      } = await moviesApi.nowPlaying();
+      const {
+        data: { results: upcoming },
+      } = await moviesApi.upcoming();
+      const {
+        data: { results: popular },
+      } = await moviesApi.popular();
+      setNowPlaying(nowPlaying);
+      setUpcoming(upcoming);
+      setPopular(popular);
+    } catch {
+      setError('영화의 정보를 찾을 수 없습니다.');
+    } finally {
+      setLoading(false);
     }
+  };
+
+  useEffect(() => {
     fetchMovieData();
   }, []);
 

@@ -9,27 +9,28 @@ const TVContainer = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    async function fetchTvData() {
-      try {
-        const {
-          data: { results: topRated },
-        } = await tvApi.topRated();
-        const {
-          data: { results: popular },
-        } = await tvApi.popular();
-        const {
-          data: { results: airingToday },
-        } = await tvApi.airingToday();
-        setTopRated(topRated);
-        setPopular(popular);
-        setAiringToday(airingToday);
-      } catch {
-        setError('TV 정보를 찾을 수 없습니다.');
-      } finally {
-        setLoading(false);
-      }
+  const fetchTvData = async () => {
+    try {
+      const {
+        data: { results: topRated },
+      } = await tvApi.topRated();
+      const {
+        data: { results: popular },
+      } = await tvApi.popular();
+      const {
+        data: { results: airingToday },
+      } = await tvApi.airingToday();
+      setTopRated(topRated);
+      setPopular(popular);
+      setAiringToday(airingToday);
+    } catch {
+      setError('TV 정보를 찾을 수 없습니다.');
+    } finally {
+      setLoading(false);
     }
+  };
+
+  useEffect(() => {
     fetchTvData();
   }, []);
 
