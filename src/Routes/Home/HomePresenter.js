@@ -11,7 +11,9 @@ import Poster from 'Components/Poster';
 const Container = styled.div`
   padding: 20px;
 `;
-
+const Test = styled.div`
+  margin: 80px 0;
+`;
 const HomePresenter = ({ nowPlaying, popular, upcoming, loading, error }) => (
   <>
     <Helmet>
@@ -21,7 +23,11 @@ const HomePresenter = ({ nowPlaying, popular, upcoming, loading, error }) => (
       <Loader />
     ) : (
       <>
+<<<<<<< HEAD
         <MainBanner popular={popular} isMovie={true} />
+=======
+        <Test>테스트입니다</Test>
+>>>>>>> dc80a3b2d8eb7c3b0f29a51002fcd9f60c9bf1ed
         <Container>
           <Helmet>
             <title>영화 | Yongflix</title>
