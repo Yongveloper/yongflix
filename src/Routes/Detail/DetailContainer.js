@@ -1,5 +1,5 @@
 import { moviesApi, tvApi } from 'api';
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import DetailPresenter from './DetailPresenter';
 
 class DetailContainer extends React.Component {
