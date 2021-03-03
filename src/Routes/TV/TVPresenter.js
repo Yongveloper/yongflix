@@ -24,7 +24,7 @@ const TVPresenter = ({ topRated, popular, airingToday, loading, error }) => (
         <MainBanner popular={popular} isMovie={false} />
         <Container>
           {topRated && topRated.length > 0 && (
-            <Section title="최고 평정 TV">
+            <Section title="최고 평점 TV">
               {topRated.map((show) => (
                 <Poster
                   key={show.id}
