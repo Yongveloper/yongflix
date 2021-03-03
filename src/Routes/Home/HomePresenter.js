@@ -21,7 +21,7 @@ const HomePresenter = ({ nowPlaying, popular, upcoming, loading, error }) => (
       <Loader />
     ) : (
       <>
-        <MainBanner popular={popular} />
+        <MainBanner popular={popular} isMovie={true} />
         <Container>
           <Helmet>
             <title>영화 | Yongflix</title>

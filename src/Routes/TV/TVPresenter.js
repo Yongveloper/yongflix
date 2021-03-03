@@ -21,7 +21,7 @@ const TVPresenter = ({ topRated, popular, airingToday, loading, error }) => (
       <Loader />
     ) : (
       <>
-        <MainBanner popular={popular} />
+        <MainBanner popular={popular} isMovie={false} />
         <Container>
           {topRated && topRated.length > 0 && (
             <Section title="최고 평정 TV">

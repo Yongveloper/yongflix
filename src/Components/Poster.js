@@ -15,7 +15,7 @@ const Image = styled.img`
   border-radius: 4px;
   background-position: center center;
   transition: opacity 0.1s linear;
-  transition: transform 0.2s ease-in-out;
+  transition: transform 0.3s ease-in-out;
 `;
 
 const DetailText = styled.span`
@@ -42,7 +42,7 @@ const ImageContainer = styled.div`
       transform: scale(1.1);
     }
     ${Image},${DetailText} {
-      opacity: 0.3;
+      opacity: 0.5;
     }
     ${Rating},${DetailText} {
       opacity: 1;
