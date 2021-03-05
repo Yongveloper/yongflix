@@ -43,7 +43,7 @@ const ImageContainer = styled.div`
   position: relative;
   &: hover {
     ${Image} {
-      transform: scale(1.1);
+      transform: scale(1.06);
     }
     ${Image},${DetailText} {
       opacity: 0.5;
