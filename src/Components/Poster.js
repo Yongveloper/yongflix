@@ -50,13 +50,20 @@ const ImageContainer = styled.div`
   } ;
 `;
 
+const TitleContainer = styled.div`
+  width: 100%;
+  padding: 12px;
+  background-color: rgb(37, 37, 37);
+`;
+
 const Title = styled.span`
   display: block;
+  font-size: 14px;
   margin-bottom: 3px;
 `;
 
 const Year = styled.span`
-  font-size: 10px;
+  font-size: 12px;
   color: rgba(255, 255, 255, 0.5);
 `;
 
@@ -79,10 +86,12 @@ const Poster = ({ id, imageUrl, title, rating, year, isMovie = false }) => (
           {rating}/10
         </Rating>
       </ImageContainer>
-      <Title>
-        {title.length > 12 ? `${title.substring(0, 12)}...` : title}
-      </Title>
-      <Year>{year ? year.substring(0, 4) : '연도 정보 없음'}</Year>
+      <TitleContainer>
+        <Title>
+          {title.length > 12 ? `${title.substring(0, 12)}...` : title}
+        </Title>
+        <Year>{year ? year.substring(0, 4) : '연도 정보 없음'}</Year>
+      </TitleContainer>
     </Container>
   </Link>
 );
