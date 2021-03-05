@@ -17,8 +17,8 @@ const Image = styled.img`
   transition: opacity 0.1s linear;
   transition: transform 0.3s ease-in-out;
   @media screen and (max-width: 500px) {
-    width: 120px;
-    height: 180px;
+    width: 140px;
+    height: 200px;
   }
 `;
 

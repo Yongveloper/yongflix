@@ -43,6 +43,9 @@ const Cover = styled.img`
   background-size: cover;
   height: 100%;
   border-radius: 5px;
+  @media screen and (max-width: 400px) {
+    width: 100%;
+  }
 `;
 
 const Data = styled.div`
