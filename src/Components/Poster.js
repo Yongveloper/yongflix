@@ -9,13 +9,17 @@ const Container = styled.div`
 
 const Image = styled.img`
   /* background-image: url(${(props) => props.bgUrl}); */
-  width: 180px;
-  height: 260px;
+  width: 240px;
+  height: 346px;
   background-size: cover;
   border-radius: 4px;
   background-position: center center;
   transition: opacity 0.1s linear;
   transition: transform 0.3s ease-in-out;
+  @media screen and (max-width: 500px) {
+    width: 120px;
+    height: 180px;
+  }
 `;
 
 const DetailText = styled.span`
@@ -53,6 +57,7 @@ const ImageContainer = styled.div`
 const TitleContainer = styled.div`
   width: 100%;
   padding: 12px;
+  line-height: 16px;
   background-color: rgb(37, 37, 37);
 `;
 
