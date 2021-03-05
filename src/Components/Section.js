@@ -17,7 +17,7 @@ const Title = styled.div`
 `;
 
 const settings = {
-  dots: false,
+  dots: true,
   infinite: false,
   speed: 500,
   slidesToShow: 5,
@@ -42,6 +42,7 @@ const settings = {
       settings: {
         slidesToShow: 2,
         slidesToScroll: 2,
+        dots: false,
       },
     },
   ],
@@ -58,6 +59,10 @@ const StyledSlider = styled(Slider)`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+  }
+
+  .slick-dots li button:before {
+    color: #fff;
   }
 `;
 
