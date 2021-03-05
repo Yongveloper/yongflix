@@ -7,7 +7,10 @@ import 'swiper/css/swiper.css';
 const ImageContainer = styled.div`
   position: relative;
   width: 760px;
-  height: 380px;
+  height: 480px;
+  @media screen and (max-width: 760px) {
+    width: 100%;
+  }
 `;
 
 const Image = styled.img`
@@ -36,31 +39,26 @@ const SubTitle = styled.h3`
 
 const MainBanner = ({ popular, isMovie }) => {
   const params = {
-    slidesPerView: 1,
-    spaceBetween: 10,
+    effect: 'coverflow',
+    grabCursor: true,
+    centeredSlides: true,
+    slidesPerView: 'auto',
+    coverflowEffect: {
+      rotate: 50,
+      stretch: 0,
+      depth: 100,
+      modifier: 1,
+      slideShadows: true,
+    },
     loop: true,
     autoplay: {
       delay: 2500,
       disableOnInteraction: false,
     },
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
     pagination: {
       el: '.swiper-pagination',
       clickable: true,
       dynamicBullets: true,
-    },
-    breakpoints: {
-      1024: {
-        slidesPerView: 3,
-        spaceBetween: 30,
-      },
-      768: {
-        slidesPerView: 2,
-        spaceBetween: 20,
-      },
     },
   };
   console.log(popular);
@@ -80,7 +78,7 @@ const MainBanner = ({ popular, isMovie }) => {
               <SubTitle>
                 {`${
                   item.overview
-                    ? item.overview.substring(0, 40)
+                    ? item.overview.substring(0, 80)
                     : '등록된 소개글이 없습니다'
                 }...`}
               </SubTitle>
