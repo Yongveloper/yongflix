@@ -29,7 +29,7 @@ const Title = styled.h1`
 
 const SubTitle = styled.h3`
   margin-top: 12px;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 300;
   line-height: 25px;
 `;
@@ -66,25 +66,27 @@ const MainBanner = ({ popular, isMovie }) => {
   console.log(popular);
   return (
     <Swiper {...params}>
-      {popular.map((item) => (
-        <ImageContainer key={item.id}>
-          <Link to={isMovie ? `/movie/${item.id}` : `/show/${item.id}`}>
-            <Image
-              src={`https://image.tmdb.org/t/p/original${item.backdrop_path}`}
-            />
-          </Link>
-          <TitleContainer>
-            <Title>{isMovie ? item.title : item.name}</Title>
-            <SubTitle>
-              {`${
-                item.overview
-                  ? item.overview.substring(0, 40)
-                  : '등록된 소개글이 없습니다'
-              }...`}
-            </SubTitle>
-          </TitleContainer>
-        </ImageContainer>
-      ))}
+      {popular
+        .filter((item) => item.backdrop_path)
+        .map((item) => (
+          <ImageContainer key={item.id}>
+            <Link to={isMovie ? `/movie/${item.id}` : `/show/${item.id}`}>
+              <Image
+                src={`https://image.tmdb.org/t/p/original${item.backdrop_path}`}
+              />
+            </Link>
+            <TitleContainer>
+              <Title>{isMovie ? item.title : item.name}</Title>
+              <SubTitle>
+                {`${
+                  item.overview
+                    ? item.overview.substring(0, 40)
+                    : '등록된 소개글이 없습니다'
+                }...`}
+              </SubTitle>
+            </TitleContainer>
+          </ImageContainer>
+        ))}
     </Swiper>
   );
 };
