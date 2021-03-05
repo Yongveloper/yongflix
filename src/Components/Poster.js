@@ -82,7 +82,7 @@ const Poster = ({ id, imageUrl, title, rating, year, isMovie = false }) => (
         <Rating>
           <span role="img" aria-label="rating">
             ⭐
-          </span>{' '}
+          </span>
           {rating}/10
         </Rating>
       </ImageContainer>
