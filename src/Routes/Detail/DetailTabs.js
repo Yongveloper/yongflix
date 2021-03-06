@@ -4,9 +4,17 @@ import BasicInfo from 'Routes/Detail/BasicInfo';
 import Credits from 'Routes/Detail/Credits';
 import Video from 'Routes/Detail/Video';
 
+const Container = styled.div`
+  height: 79%;
+  margin-top: 26px;
+  @media screen and (max-width: 1024px) {
+    height: 500px;
+    margin-bottom: 30px;
+  }
+`;
+
 const Ul = styled.ul`
   display: flex;
-  margin-top: 26px;
 `;
 
 const Li = styled.li`
@@ -27,10 +35,8 @@ const Li = styled.li`
 const ContentContainer = styled.div`
   display: ${(props) => (props.current === 1 ? 'flex' : 'block')};
   flex-direction: column;
-  justify-content: center;
   width: 100%;
-  max-width: 100%;
-  height: 79%;
+  height: 100%;
   background-color: rgba(0, 0, 0, 0.4);
   padding: ${(props) => (props.current === 0 ? '20px 25px;' : '20px 45px;')};
   overflow: auto;
@@ -56,7 +62,7 @@ const DetailTaps = ({ result, credits }) => {
   const tabs = ['기본 정보', '제작/출연', '영상클립'];
 
   return (
-    <>
+    <Container>
       <Ul>
         <Li
           current={currentTap === 0}
@@ -88,7 +94,7 @@ const DetailTaps = ({ result, credits }) => {
         {currentTap === 1 && <Credits result={result} credits={credits} />}
         {currentTap === 2 && <Video result={result} />}
       </ContentContainer>
-    </>
+    </Container>
   );
 };
 

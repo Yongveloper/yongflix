@@ -58,10 +58,11 @@ const Cover = styled.img`
 `;
 
 const Data = styled.div`
-  width: 60%;
+  width: 100%;
+  max-width: 60%;
   margin-left: 10px;
   @media screen and (max-width: 1024px) {
-    width: 100%;
+    max-width: 100%;
     margin-top: 10px;
     margin-left: 0;
     text-align: center;
@@ -69,16 +70,22 @@ const Data = styled.div`
 `;
 
 const TitleContainer = styled.div`
-  display: flex;
-  align-items: center;
+  height: 10%;
   margin-bottom: 10px;
   @media screen and (max-width: 1024px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
   }
 `;
 
-const Title = styled.h3`
+const Title = styled.h1`
+  display: flex;
+  align-items: center;
   font-size: 32px;
+  line-height: 100%;
+  margin-bottom: 8px;
 `;
 
 const Imdb = styled.a`
@@ -88,14 +95,14 @@ const Imdb = styled.a`
   background-color: #fcd700;
   color: rgb(20, 20, 20, 1);
   border-radius: 5px;
-  padding: 5px;
+  padding: 0 5px;
   &:hover {
     opacity: 0.7;
   }
   transition: opacity 0.1s linear;
 `;
 
-const Subtitle = styled.h4`
+const Subtitle = styled.h2`
   font-size: 15px;
 `;
 
@@ -132,15 +139,18 @@ const DetailPresenter = ({ result, external, credits, loading, error }) =>
         </CoverContainer>
         <Data>
           <TitleContainer>
-            <Title>{result.title ? result.title : result.name}</Title>
-            <Imdb
-              href={`https://www.imdb.com/title/${external.imdb_id}`}
-              target="_blank"
-            >
-              IMDB
-            </Imdb>
+            <Title>
+              {result.title ? result.title : result.name}{' '}
+              <Imdb
+                href={`https://www.imdb.com/title/${external.imdb_id}`}
+                target="_blank"
+              >
+                IMDB
+              </Imdb>
+            </Title>
+
+            <Subtitle>{result.tagline && result.tagline}</Subtitle>
           </TitleContainer>
-          <Subtitle>{result.tagline && result.tagline}</Subtitle>
           <DetaileTabs result={result} credits={credits} />
         </Data>
       </Content>
