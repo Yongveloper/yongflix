@@ -8,16 +8,17 @@ import DetaileTabs from 'Routes/Detail/DetailTabs';
 
 const Container = styled.div`
   height: calc(100vh - 50px);
-  /* width: 100%; */
   position: relative;
-  padding: 50px;
+  @media screen and (max-width: 1024px) {
+    height: auto;
+  }
 `;
 
 const Backdrop = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  width: 100vw;
+  width: 100%;
   height: 100%;
   background-image: url(${(props) => props.bgImage});
   background-position: center center;
@@ -26,26 +27,34 @@ const Backdrop = styled.div`
   opacity: 0.5;
   z-index: 0;
 `;
+
 const Content = styled.div`
-  display: flex;
-  width: 100%;
   position: relative;
+  display: flex;
+  height: 100%;
+  padding: 50px;
   z-index: 1;
-  height: calc(100vh - 130px);
   @media screen and (max-width: 1024px) {
+    justify-content: center;
     flex-direction: column;
     align-items: center;
+  }
+`;
+
+const CoverContainer = styled.div`
+  max-width: 450px;
+  height: 100%;
+  @media screen and (max-width: 400px) {
+    width: 200px;
   }
 `;
 
 const Cover = styled.img`
   background-position: center center;
   background-size: cover;
+  width: 100%;
   height: 100%;
   border-radius: 5px;
-  @media screen and (max-width: 400px) {
-    width: 200px;
-  }
 `;
 
 const Data = styled.div`
@@ -54,6 +63,7 @@ const Data = styled.div`
   @media screen and (max-width: 1024px) {
     width: 100%;
     margin-top: 10px;
+    margin-left: 0;
     text-align: center;
   }
 `;
@@ -111,13 +121,15 @@ const DetailPresenter = ({ result, external, credits, loading, error }) =>
         bgImage={`https://image.tmdb.org/t/p/original${result.backdrop_path}`}
       />
       <Content>
-        <Cover
-          src={
-            result.poster_path
-              ? `https://image.tmdb.org/t/p/original${result.poster_path}`
-              : require('../../assets/noPosterSmall.png').default
-          }
-        />
+        <CoverContainer>
+          <Cover
+            src={
+              result.poster_path
+                ? `https://image.tmdb.org/t/p/original${result.poster_path}`
+                : require('../../assets/noPosterSmall.png').default
+            }
+          />
+        </CoverContainer>
         <Data>
           <TitleContainer>
             <Title>{result.title ? result.title : result.name}</Title>
