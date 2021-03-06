@@ -8,7 +8,7 @@ import DetaileTabs from 'Routes/Detail/DetailTabs';
 
 const Container = styled.div`
   height: calc(100vh - 50px);
-  width: 100%;
+  /* width: 100%; */
   position: relative;
   padding: 50px;
 `;
@@ -17,7 +17,7 @@ const Backdrop = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 100vw;
   height: 100%;
   background-image: url(${(props) => props.bgImage});
   background-position: center center;
@@ -44,7 +44,7 @@ const Cover = styled.img`
   height: 100%;
   border-radius: 5px;
   @media screen and (max-width: 400px) {
-    width: 100%;
+    width: 200px;
   }
 `;
 
