@@ -6,7 +6,7 @@ import 'swiper/css/swiper.css';
 
 const ImageContainer = styled.div`
   position: relative;
-  width: 760px;
+  width: 800px;
   height: 480px;
   @media screen and (max-width: 760px) {
     width: 100%;
@@ -68,7 +68,7 @@ const MainBanner = ({ popular, isMovie }) => {
   return (
     <Swiper {...params}>
       {popular
-        .filter((item) => item.backdrop_path)
+        .filter((item) => item.backdrop_path && item.overview)
         .map((item) => (
           <ImageContainer key={item.id}>
             <Link to={isMovie ? `/movie/${item.id}` : `/show/${item.id}`}>
@@ -78,13 +78,7 @@ const MainBanner = ({ popular, isMovie }) => {
             </Link>
             <TitleContainer>
               <Title>{isMovie ? item.title : item.name}</Title>
-              <SubTitle>
-                {`${
-                  item.overview
-                    ? item.overview.substring(0, 80)
-                    : '등록된 소개글이 없습니다'
-                }...`}
-              </SubTitle>
+              <SubTitle>{`${item.overview.substring(0, 80)}...`}</SubTitle>
             </TitleContainer>
           </ImageContainer>
         ))}
