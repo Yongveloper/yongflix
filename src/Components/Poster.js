@@ -12,7 +12,7 @@ const Image = styled.img`
   width: 240px;
   height: 346px;
   background-size: cover;
-  border-radius: 4px;
+  border-radius: 4px 4px 0 0;
   background-position: center center;
   transition: opacity 0.1s linear;
   transition: transform 0.3s ease-in-out;
@@ -39,7 +39,6 @@ const Rating = styled.span`
 
 const ImageContainer = styled.div`
   overflow: hidden;
-  margin-bottom: 5px;
   position: relative;
   &: hover {
     ${Image} {
