@@ -6,7 +6,7 @@ import Video from 'Routes/Detail/Video';
 
 const Ul = styled.ul`
   display: flex;
-  margin-top: 30px;
+  margin-top: 26px;
 `;
 
 const Li = styled.li`
