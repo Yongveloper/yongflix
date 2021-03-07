@@ -76,6 +76,7 @@ const CastContainer = styled.div``;
 const CastImage = styled.img`
   width: 120px;
   height: 150px;
+  border-radius: 8px;
 `;
 
 const Credits = ({ result, credits }) => (

@@ -40,8 +40,8 @@ const ContentContainer = styled.div`
   background-color: rgba(0, 0, 0, 0.4);
   padding: ${(props) => (props.current === 0 ? '20px 25px;' : '20px 45px;')};
   overflow: auto;
-  border-radius: 10px;
-  border-top-left-radius: ${(props) => (props.current === 0 ? '0px' : '10px')};
+  border-radius: 8px;
+  border-top-left-radius: ${(props) => (props.current === 0 ? '0px' : '8px')};
   ::-webkit-scrollbar {
     width: 20px;
   }
