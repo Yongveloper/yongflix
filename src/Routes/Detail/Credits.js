@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Slider from 'react-slick';
 
-const Item = styled.span``;
+const Item = styled.span`
+  text-align: center;
+`;
 
 const Title = styled.div`
   font-size: 16px;
