@@ -21,6 +21,29 @@ const settings = {
   speed: 500,
   slidesToShow: 4,
   slidesToScroll: 4,
+  responsive: [
+    {
+      breakpoint: 1200,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+      },
+    },
+    {
+      breakpoint: 700,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2,
+      },
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+      },
+    },
+  ],
 };
 
 const StyledSlider = styled(Slider)`
@@ -39,8 +62,8 @@ const StyledSlider = styled(Slider)`
 const CompaineContainer = styled.div``;
 
 const CompanyImage = styled.img`
-  width: 220px;
-  height: 60px;
+  width: 120px;
+  height: 50px;
   border-radius: 8px;
   padding: 10px;
   background-color: #fff;
