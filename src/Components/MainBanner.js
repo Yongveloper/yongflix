@@ -58,11 +58,6 @@ const MainBanner = ({ popular, isMovie }) => {
       delay: 2500,
       disableOnInteraction: false,
     },
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-      dynamicBullets: true,
-    },
   };
   console.log(popular);
   return (
