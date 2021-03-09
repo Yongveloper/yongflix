@@ -56,8 +56,16 @@ class DetailContainer extends React.Component {
   }
 
   render() {
-    const { result, external, credits, similar, error, loading } = this.state;
-
+    const {
+      result,
+      external,
+      credits,
+      similar,
+      error,
+      loading,
+      isMovie,
+    } = this.state;
+    console.log(similar);
     return (
       <DetailPresenter
         result={result}
@@ -66,6 +74,7 @@ class DetailContainer extends React.Component {
         similar={similar}
         error={error}
         loading={loading}
+        isMovie={isMovie}
       />
     );
   }

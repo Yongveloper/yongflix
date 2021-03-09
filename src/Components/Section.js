@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Slider from 'react-slick';
 
 const Container = styled.div`
+  position: relative;
   :not(:last-child) {
     margin-bottom: 50px;
   }

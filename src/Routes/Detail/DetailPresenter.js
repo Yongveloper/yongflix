@@ -5,6 +5,8 @@ import Helmet from 'react-helmet';
 import Loader from 'Components/Loader';
 import Message from 'Components/Message';
 import DetaileTabs from 'Routes/Detail/DetailTabs';
+import Section from 'Components/Section';
+import Poster from 'Components/Poster';
 
 const Container = styled.div`
   height: calc(100vh - 50px);
@@ -106,7 +108,19 @@ const Subtitle = styled.h2`
   font-size: 15px;
 `;
 
-const DetailPresenter = ({ result, external, credits, loading, error }) =>
+const SimilarContainer = styled.div`
+  padding: 20px;
+`;
+
+const DetailPresenter = ({
+  result,
+  external,
+  credits,
+  similar,
+  loading,
+  error,
+  isMovie,
+}) =>
   loading ? (
     <>
       <Helmet>
@@ -154,6 +168,23 @@ const DetailPresenter = ({ result, external, credits, loading, error }) =>
           <DetaileTabs result={result} credits={credits} />
         </Data>
       </Content>
+      {similar.results.length > 0 && (
+        <SimilarContainer>
+          <Section title={isMovie ? '관련 추천 영화' : '관련 추천 TV'}>
+            {similar.results.map((item) => (
+              <Poster
+                key={item.id}
+                id={item.id}
+                imageUrl={item.poster_path}
+                title={isMovie ? item.title : item.name}
+                rating={item.vote_average}
+                year={isMovie ? item.release_date : item.first_air_date}
+                isMovie={isMovie}
+              />
+            ))}
+          </Section>
+        </SimilarContainer>
+      )}
     </Container>
   );
 

@@ -30,4 +30,4 @@ React and ES6 by building a Popcorn Time Clone. (Movie and TV Shows Discovery Ap
 
 # Preview:
 
-Try it on [Netlify](https://yongflix.netlify.app/#/)
+Try it on [Netlify](https://yongflix.netlify.app)
