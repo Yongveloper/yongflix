@@ -13,6 +13,7 @@ class DetailContainer extends React.Component {
       result: null,
       external: null,
       credits: null,
+      similar: null,
       error: null,
       loading: true,
       isMovie: pathname.includes('/movie/'),
@@ -34,31 +35,37 @@ class DetailContainer extends React.Component {
     let result = null;
     let external = null;
     let credits = null;
+    let similar = null;
     try {
       if (isMovie) {
         ({ data: result } = await moviesApi.moiveDetail(parsedId));
         ({ data: external } = await moviesApi.external(parsedId));
         ({ data: credits } = await moviesApi.credits(parsedId));
+        ({ data: similar } = await moviesApi.similar(parsedId));
+
       } else {
         ({ data: result } = await tvApi.showDetail(parsedId));
         ({ data: external } = await tvApi.external(parsedId));
         ({ data: credits } = await tvApi.credits(parsedId));
+        ({ data: similar } = await tvApi.similar(parsedId));
+
       }
     } catch {
       this.setState({ error: '검색결과를 찾지 못했습니다.' });
     } finally {
-      this.setState({ loading: false, result, external, credits });
+      this.setState({ loading: false, result, external, credits,similar });
     }
   }
 
   render() {
-    const { result, external, credits, error, loading } = this.state;
+    const { result, external, credits, similar error, loading } = this.state;
 
     return (
       <DetailPresenter
         result={result}
         external={external}
         credits={credits}
+        similar={similar}
         error={error}
         loading={loading}
       />
