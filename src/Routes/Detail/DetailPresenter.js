@@ -170,7 +170,7 @@ const DetailPresenter = ({
       </Content>
       {similar.results.length > 0 && (
         <SimilarContainer>
-          <Section title={isMovie ? '관련 추천 영화' : '관련 추천 TV'}>
+          <Section title={isMovie ? '비슷한 영화 추천' : '비슷한 TV 추천'}>
             {similar.results.map((item) => (
               <Poster
                 key={item.id}
