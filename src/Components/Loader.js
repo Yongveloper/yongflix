@@ -8,7 +8,7 @@ const Container = styled.div`
   margin: -25px 0 0 -25px;
   width: 50px;
   height: 50px;
-  border: 3px solid rgba(255, 255, 255, 0.3);
+  border: 6px solid rgba(255, 255, 255, 0.3);
   border-radius: 50%;
   border-top-color: #fff;
   animation: spin 1s ease-in-out infinite;
