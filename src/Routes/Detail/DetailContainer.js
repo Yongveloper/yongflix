@@ -42,23 +42,21 @@ class DetailContainer extends React.Component {
         ({ data: external } = await moviesApi.external(parsedId));
         ({ data: credits } = await moviesApi.credits(parsedId));
         ({ data: similar } = await moviesApi.similar(parsedId));
-
       } else {
         ({ data: result } = await tvApi.showDetail(parsedId));
         ({ data: external } = await tvApi.external(parsedId));
         ({ data: credits } = await tvApi.credits(parsedId));
         ({ data: similar } = await tvApi.similar(parsedId));
-
       }
     } catch {
       this.setState({ error: '검색결과를 찾지 못했습니다.' });
     } finally {
-      this.setState({ loading: false, result, external, credits,similar });
+      this.setState({ loading: false, result, external, credits, similar });
     }
   }
 
   render() {
-    const { result, external, credits, similar error, loading } = this.state;
+    const { result, external, credits, similar, error, loading } = this.state;
 
     return (
       <DetailPresenter
