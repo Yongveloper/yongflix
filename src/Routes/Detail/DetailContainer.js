@@ -66,6 +66,7 @@ class DetailContainer extends React.Component {
       isMovie,
     } = this.state;
     console.log(similar);
+    console.log(credits);
     return (
       <DetailPresenter
         result={result}

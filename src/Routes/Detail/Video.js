@@ -37,11 +37,8 @@ const Video = ({ result }) => (
     {result.videos.results && result.videos.results.length > 0 ? (
       <StyledSlider {...settings}>
         {result.videos.results.map((video) => (
-          <VideoContainer>
-            <Iframe
-              key={video.id}
-              src={`https://www.youtube.com/embed/${video.key}`}
-            ></Iframe>
+          <VideoContainer key={video.id}>
+            <Iframe src={`https://www.youtube.com/embed/${video.key}`}></Iframe>
           </VideoContainer>
         ))}
       </StyledSlider>
