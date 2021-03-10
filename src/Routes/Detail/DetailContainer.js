@@ -67,6 +67,7 @@ class DetailContainer extends React.Component {
     } = this.state;
     console.log(similar);
     console.log(credits);
+    console.log(result);
     return (
       <DetailPresenter
         result={result}

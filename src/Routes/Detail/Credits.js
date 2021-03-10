@@ -3,7 +3,14 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Slider from 'react-slick';
 
+const Container = styled.div``;
+const FlexContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 const Item = styled.span`
+  line-height: 23px;
   text-align: center;
 `;
 
@@ -49,7 +56,7 @@ const settings = {
 };
 
 const StyledSlider = styled(Slider)`
-  .slick-track {
+  /* .slick-track {
     display: flex;
     align-items: center;
   }
@@ -58,7 +65,7 @@ const StyledSlider = styled(Slider)`
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
+  } */
 `;
 
 const CompaineContainer = styled.div``;
@@ -86,16 +93,18 @@ const Credits = ({ result, credits }) => (
         <Title>제작</Title>
         <StyledSlider {...settings}>
           {result.production_companies.map((company) => (
-            <>
-              <CompanyImage
-                src={
-                  company.logo_path
-                    ? `https://image.tmdb.org/t/p/original${company.logo_path}`
-                    : require('../../assets/noPosterSmall.png').default
-                }
-              />
-              <Item>{company.name}</Item>
-            </>
+            <Container key={company.id}>
+              <FlexContainer>
+                <CompanyImage
+                  src={
+                    company.logo_path
+                      ? `https://image.tmdb.org/t/p/original${company.logo_path}`
+                      : require('../../assets/noPosterSmall.png').default
+                  }
+                />
+                <Item>{company.name}</Item>
+              </FlexContainer>
+            </Container>
           ))}
         </StyledSlider>
       </CompaineContainer>
@@ -105,18 +114,19 @@ const Credits = ({ result, credits }) => (
         <Title>출연</Title>
         <StyledSlider {...settings}>
           {credits.cast.map((cast) => (
-            <>
-              <CastImage
-                src={
-                  cast.profile_path
-                    ? `https://image.tmdb.org/t/p/original${cast.profile_path}`
-                    : require('../../assets/noPosterSmall.png').default
-                }
-              />
-              <Item>{cast.name}</Item>
-              <br />
-              <Item>{cast.character}</Item>
-            </>
+            <Container key={cast.cast_id}>
+              <FlexContainer>
+                <CastImage
+                  src={
+                    cast.profile_path
+                      ? `https://image.tmdb.org/t/p/original${cast.profile_path}`
+                      : require('../../assets/noPosterSmall.png').default
+                  }
+                />
+                <Item>{cast.name}</Item>
+                <Item>{cast.character}</Item>
+              </FlexContainer>
+            </Container>
           ))}
         </StyledSlider>
       </CastContainer>
