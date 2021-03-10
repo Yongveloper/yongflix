@@ -7,7 +7,7 @@ import Search from 'Routes/Search';
 import Detail from 'Routes/Detail';
 
 const Routers = () => (
-  <BrowserRouter forceRefresh>
+  <BrowserRouter>
     <>
       <Header />
       <Switch>
