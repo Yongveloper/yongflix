@@ -114,7 +114,7 @@ const Credits = ({ result, credits }) => (
         <Title>출연</Title>
         <StyledSlider {...settings}>
           {credits.cast.map((cast) => (
-            <Container key={cast.cast_id}>
+            <Container key={cast.cast_id ? cast.cast_id : cast.id}>
               <FlexContainer>
                 <CastImage
                   src={
