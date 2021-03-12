@@ -82,7 +82,7 @@ const Poster = ({ id, imageUrl, title, rating, year, isMovie = false }) => (
               : require('../assets/noPosterSmall.png').default
           }
         />
-        <DetailText>상세 보기</DetailText>
+        <DetailText>자세히 보기</DetailText>
         <Rating>
           <span role="img" aria-label="rating">
             ⭐
