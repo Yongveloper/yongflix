@@ -5,7 +5,6 @@ import DetailPresenter from './DetailPresenter';
 class DetailContainer extends React.Component {
   constructor(props) {
     super(props);
-    console.log(props);
     const {
       location: { pathname },
     } = props;
@@ -20,7 +19,18 @@ class DetailContainer extends React.Component {
     };
   }
 
-  async componentDidMount() {
+  componentDidMount() {
+    this.getData();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.location.pathname !== this.props.location.pathname) {
+      this.setState({ loading: true });
+      this.getData();
+    }
+  }
+
+  async getData() {
     const {
       match: {
         params: { id },
@@ -65,9 +75,7 @@ class DetailContainer extends React.Component {
       loading,
       isMovie,
     } = this.state;
-    console.log(similar);
-    console.log(credits);
-    console.log(result);
+
     return (
       <DetailPresenter
         result={result}
