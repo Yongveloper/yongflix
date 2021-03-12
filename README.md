@@ -19,6 +19,9 @@ React and ES6 by building a Popcorn Time Clone. (Movie and TV Shows Discovery Ap
 - [x] TV Show Detail
 - [x] Movie Detail
 - [x] Search (Moive, TV)
+- [x] Video (Movie, TV)
+- [x] Credits (Movie, TV)
+- [x] Similar (Movie, Tv)
 
 ## Code Challenges
 
