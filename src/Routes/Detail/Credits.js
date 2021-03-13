@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Slider from 'react-slick';
 
@@ -55,18 +54,7 @@ const settings = {
   ],
 };
 
-const StyledSlider = styled(Slider)`
-  /* .slick-track {
-    display: flex;
-    align-items: center;
-  }
-
-  .slick-slide div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  } */
-`;
+const StyledSlider = styled(Slider)``;
 
 const CompaineContainer = styled.div``;
 
@@ -133,10 +121,5 @@ const Credits = ({ result, credits }) => (
     )}
   </>
 );
-
-Credits.propTypes = {
-  result: PropTypes.object,
-  credits: PropTypes.object,
-};
 
 export default Credits;

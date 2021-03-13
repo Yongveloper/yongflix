@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const Item = styled.span``;
@@ -52,9 +51,5 @@ const BasicInfo = ({ result }) => (
     </Overview>
   </>
 );
-
-BasicInfo.propTypes = {
-  result: PropTypes.object,
-};
 
 export default BasicInfo;
