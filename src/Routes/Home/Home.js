@@ -12,7 +12,7 @@ const Container = styled.div`
   padding: 20px;
 `;
 
-const HomeContainer = () => {
+const Home = () => {
   const [state, setState] = useState({
     nowPlaying: null,
     upcoming: null,
@@ -44,7 +44,7 @@ const HomeContainer = () => {
     fetchMovieData();
   }, []);
 
-  const { popular, nowPlaying, upcoming } = state;
+  const { nowPlaying, upcoming, popular } = state;
 
   return (
     <>
@@ -113,4 +113,4 @@ const HomeContainer = () => {
   );
 };
 
-export default HomeContainer;
+export default Home;
