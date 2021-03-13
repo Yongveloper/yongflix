@@ -44,7 +44,7 @@ const Content = styled.div`
 `;
 
 const CoverContainer = styled.div`
-  max-width: 450px;
+  max-width: 435px;
   height: 100%;
   @media screen and (max-width: 400px) {
     width: 200px;
