@@ -13,7 +13,7 @@ const Container = styled.div`
 `;
 
 const Home = () => {
-  const [state, setState] = useState({
+  const [data, setData] = useState({
     nowPlaying: null,
     upcoming: null,
     popular: null,
@@ -33,7 +33,7 @@ const Home = () => {
         const {
           data: { results: popular },
         } = await moviesApi.popular();
-        setState({ nowPlaying, upcoming, popular });
+        setData({ nowPlaying, upcoming, popular });
       } catch {
         setError('영화의 정보를 찾을 수 없습니다.');
       } finally {
@@ -43,7 +43,7 @@ const Home = () => {
     fetchMovieData();
   }, []);
 
-  const { nowPlaying, upcoming, popular } = state;
+  const { nowPlaying, upcoming, popular } = data;
 
   return (
     <>

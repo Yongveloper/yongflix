@@ -13,7 +13,7 @@ const Container = styled.div`
 `;
 
 const TV = () => {
-  const [state, setState] = useState({
+  const [data, setData] = useState({
     topRated: null,
     popular: null,
     airingToday: null,
@@ -35,7 +35,7 @@ const TV = () => {
         const {
           data: { results: airingToday },
         } = await tvApi.airingToday();
-        setState({ topRated, popular, airingToday });
+        setData({ topRated, popular, airingToday });
       } catch {
         setError('TV 정보를 찾을 수 없습니다.');
       } finally {
@@ -45,7 +45,7 @@ const TV = () => {
     fetchTvData();
   }, []);
 
-  const { topRated, popular, airingToday } = state;
+  const { topRated, popular, airingToday } = data;
 
   return (
     <>
