@@ -59,7 +59,6 @@ const MainBanner = ({ popular, isMovie }) => {
       disableOnInteraction: false,
     },
   };
-  console.log(popular);
   return (
     <Swiper {...params}>
       {popular
