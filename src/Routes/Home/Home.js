@@ -45,14 +45,14 @@ const Home = () => {
 
   const { nowPlaying, upcoming, popular } = data;
 
+  if (loading) return <Loader />;
+
   return (
     <>
       <Helmet>
         <title>영화 | Yongflix</title>
       </Helmet>
-      {loading ? (
-        <Loader />
-      ) : (
+      {
         <>
           <MainBanner popular={popular} isMovie={true} />
           <Container>
@@ -107,7 +107,7 @@ const Home = () => {
             {error && <Message color="#e74c3c" text={error} />}
           </Container>
         </>
-      )}
+      }
     </>
   );
 };

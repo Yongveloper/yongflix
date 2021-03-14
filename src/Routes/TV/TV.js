@@ -47,14 +47,14 @@ const TV = () => {
 
   const { topRated, popular, airingToday } = data;
 
+  if (loading) return <Loader />;
+
   return (
     <>
       <Helmet>
         <title>TV | Yongflix</title>
       </Helmet>
-      {loading ? (
-        <Loader />
-      ) : (
+      {
         <>
           <MainBanner popular={popular} isMovie={false} />
           <Container>
@@ -103,7 +103,7 @@ const TV = () => {
             {error && <Message color="#e74c3c" text={error} />}
           </Container>
         </>
-      )}
+      }
     </>
   );
 };
