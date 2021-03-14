@@ -24,7 +24,9 @@ class DetailContainer extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
+    console.log('update');
     if (prevProps.location.pathname !== this.props.location.pathname) {
+      console.log(true);
       this.setState({ loading: true });
       this.getData();
     }
