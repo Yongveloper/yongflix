@@ -20,19 +20,20 @@ class DetailContainer extends React.Component {
   }
 
   componentDidMount() {
-    this.getData();
+    this.fetchData();
   }
 
   componentDidUpdate(prevProps) {
     console.log('update');
     if (prevProps.location.pathname !== this.props.location.pathname) {
-      console.log(true);
+      console.log(`이전 pathname ${prevProps.location.pathname}`);
+      console.log(`현재 pathname ${this.props.location.pathname}`);
       this.setState({ loading: true });
-      this.getData();
+      this.fetchData();
     }
   }
 
-  async getData() {
+  async fetchData() {
     const {
       match: {
         params: { id },
