@@ -37,7 +37,7 @@ const Video = ({ result }) => (
       <StyledSlider {...settings}>
         {result.videos.results.map((video) => (
           <VideoContainer key={video.id}>
-            <Iframe src={`https://www.youtube.com/embed/${video.key}`}></Iframe>
+            <Iframe src={`https://www.youtube.com/embed/${video.key}`} />
           </VideoContainer>
         ))}
       </StyledSlider>

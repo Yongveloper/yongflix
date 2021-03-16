@@ -33,8 +33,9 @@ const Backdrop = styled.div`
 const Content = styled.div`
   position: relative;
   display: flex;
+  justify-content: center;
   height: 100%;
-  padding: 50px;
+  padding: 20px;
   z-index: 1;
   @media screen and (max-width: 1024px) {
     justify-content: center;
@@ -44,6 +45,7 @@ const Content = styled.div`
 `;
 
 const CoverContainer = styled.div`
+  width: 435px;
   max-width: 435px;
   height: 100%;
   @media screen and (max-width: 400px) {
