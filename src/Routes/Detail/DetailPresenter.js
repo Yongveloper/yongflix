@@ -187,21 +187,6 @@ const DetailPresenter = ({
           </Section>
         </SlideContainer>
       )}
-      {result.seasons && result.seasons.length > 0 && (
-        <SlideContainer>
-          <Section title="TV 시리즈">
-            {result.seasons.map((season) => (
-              <Poster
-                key={season.id}
-                id={season.id}
-                title={season.name}
-                imageUrl={season.poster_path}
-                year={season.air_date}
-              />
-            ))}
-          </Section>
-        </SlideContainer>
-      )}
     </Container>
   );
 

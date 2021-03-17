@@ -1,63 +1,26 @@
 import React from 'react';
 import styled from 'styled-components';
 import Slider from 'react-slick';
+import {
+  FlexContainerStyle,
+  ItemStyle,
+  TitleStyle,
+  settings,
+} from './DetailTabStyleVariable';
 
-const Container = styled.div``;
-const FlexContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-const Item = styled.span`
-  line-height: 23px;
-  text-align: center;
-`;
+const CompaineContainer = styled.div``;
 
 const Title = styled.div`
-  font-size: 18px;
-  font-weight: 600;
-  text-align: center;
-  margin-left: 10px;
-  margin-bottom: 20px;
-  + div {
-    margin-bottom: 20px;
-  }
+  ${TitleStyle}
 `;
-
-const settings = {
-  dots: false,
-  infinite: false,
-  speed: 500,
-  slidesToShow: 4,
-  slidesToScroll: 4,
-  responsive: [
-    {
-      breakpoint: 1200,
-      settings: {
-        slidesToShow: 3,
-        slidesToScroll: 3,
-      },
-    },
-    {
-      breakpoint: 700,
-      settings: {
-        slidesToShow: 2,
-        slidesToScroll: 2,
-      },
-    },
-    {
-      breakpoint: 480,
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1,
-      },
-    },
-  ],
-};
 
 const StyledSlider = styled(Slider)``;
 
-const CompaineContainer = styled.div``;
+const Container = styled.div``;
+
+const FlexContainer = styled.div`
+  ${FlexContainerStyle}
+`;
 
 const CompanyImage = styled.img`
   width: 120px;
@@ -65,6 +28,10 @@ const CompanyImage = styled.img`
   border-radius: 8px;
   padding: 10px;
   background-color: #fff;
+`;
+
+const Item = styled.span`
+  ${ItemStyle}
 `;
 
 const CastContainer = styled.div``;

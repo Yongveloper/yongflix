@@ -1,12 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import Slider from 'react-slick';
-
+import { TitleStyle } from './DetailTabStyleVariable';
 const Title = styled.div`
-  font-size: 18px;
-  font-weight: 600;
-  text-align: center;
-  margin-bottom: 20px;
+  ${TitleStyle}
 `;
 
 const settings = {
