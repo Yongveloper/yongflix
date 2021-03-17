@@ -82,7 +82,7 @@ const Poster = ({ id, imageUrl, title, rating, year, isMovie = false }) => (
           }
         />
         <DetailText>자세히 보기</DetailText>
-        {rating && (
+        {rating > 0 && (
           <Rating>
             <span role="img" aria-label="rating">
               ⭐
