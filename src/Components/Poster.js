@@ -82,12 +82,14 @@ const Poster = ({ id, imageUrl, title, rating, year, isMovie = false }) => (
           }
         />
         <DetailText>자세히 보기</DetailText>
-        <Rating>
-          <span role="img" aria-label="rating">
-            ⭐
-          </span>
-          {rating}/10
-        </Rating>
+        {rating && (
+          <Rating>
+            <span role="img" aria-label="rating">
+              ⭐
+            </span>
+            {rating}/10
+          </Rating>
+        )}
       </ImageContainer>
       <TitleContainer>
         <Title>

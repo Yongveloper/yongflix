@@ -110,7 +110,7 @@ const Subtitle = styled.h2`
   font-size: 15px;
 `;
 
-const SimilarContainer = styled.div`
+const SlideContainer = styled.div`
   padding: 20px;
 `;
 
@@ -167,11 +167,11 @@ const DetailPresenter = ({
 
             <Subtitle>{result.tagline && result.tagline}</Subtitle>
           </TitleContainer>
-          <DetaileTabs result={result} credits={credits} />
+          <DetaileTabs result={result} credits={credits} isMovie={isMovie} />
         </Data>
       </Content>
       {similar.results.length > 0 && (
-        <SimilarContainer>
+        <SlideContainer>
           <Section title={isMovie ? '비슷한 영화 추천' : '비슷한 TV 추천'}>
             {similar.results.map((item) => (
               <Poster
@@ -185,7 +185,22 @@ const DetailPresenter = ({
               />
             ))}
           </Section>
-        </SimilarContainer>
+        </SlideContainer>
+      )}
+      {result.seasons && result.seasons.length > 0 && (
+        <SlideContainer>
+          <Section title="TV 시리즈">
+            {result.seasons.map((season) => (
+              <Poster
+                key={season.id}
+                id={season.id}
+                title={season.name}
+                imageUrl={season.poster_path}
+                year={season.air_date}
+              />
+            ))}
+          </Section>
+        </SlideContainer>
       )}
     </Container>
   );

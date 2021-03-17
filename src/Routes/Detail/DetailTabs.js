@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import BasicInfo from 'Routes/Detail/BasicInfo';
-import Credits from 'Routes/Detail/Credits';
-import Video from 'Routes/Detail/Video';
+import BasicInfo from './BasicInfo';
+import Credits from './Credits';
+import Video from './Video';
+import Seasons from './Seasons';
 
 const Container = styled.div`
   height: 79%;
@@ -57,42 +58,53 @@ const ContentContainer = styled.div`
   }
 `;
 
-const DetailTaps = ({ result, credits }) => {
-  const [currentTap, setCurrentTap] = useState(0);
-  const tabs = ['기본 정보', '제작/출연', '영상클립'];
-
+const DetailTaps = ({ result, credits, isMovie }) => {
+  const [currentTab, setCurrentTab] = useState(0);
+  const tabs = ['기본 정보', '제작/출연', '영상클립', '시리즈'];
   return (
     <Container>
       <Ul>
         <Li
-          current={currentTap === 0}
+          current={currentTab === 0}
           onClick={() => {
-            setCurrentTap(0);
+            setCurrentTab(0);
           }}
         >
           {tabs[0]}
         </Li>
         <Li
-          current={currentTap === 1}
+          current={currentTab === 1}
           onClick={() => {
-            setCurrentTap(1);
+            setCurrentTab(1);
           }}
         >
           {tabs[1]}
         </Li>
         <Li
-          current={currentTap === 2}
+          current={currentTab === 2}
           onClick={() => {
-            setCurrentTap(2);
+            setCurrentTab(2);
           }}
         >
           {tabs[2]}
         </Li>
+
+        {!isMovie && (
+          <Li
+            current={currentTab === 3}
+            onClick={() => {
+              setCurrentTab(3);
+            }}
+          >
+            {tabs[3]}
+          </Li>
+        )}
       </Ul>
-      <ContentContainer current={currentTap}>
-        {currentTap === 0 && <BasicInfo result={result} />}
-        {currentTap === 1 && <Credits result={result} credits={credits} />}
-        {currentTap === 2 && <Video result={result} />}
+      <ContentContainer current={currentTab}>
+        {currentTab === 0 && <BasicInfo result={result} />}
+        {currentTab === 1 && <Credits result={result} credits={credits} />}
+        {currentTab === 2 && <Video result={result} />}
+        {currentTab === 3 && <Seasons result={result} />}
       </ContentContainer>
     </Container>
   );

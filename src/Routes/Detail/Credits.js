@@ -14,8 +14,9 @@ const Item = styled.span`
 `;
 
 const Title = styled.div`
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 600;
+  text-align: center;
   margin-left: 10px;
   margin-bottom: 20px;
   + div {

@@ -3,9 +3,6 @@ import { moviesApi, tvApi } from 'api';
 import DetailPresenter from './DetailPresenter';
 
 const DetailContainer = ({ location, history, match }) => {
-  console.log(location);
-  console.log(history);
-  console.log(match);
   const [state, setState] = useState({
     result: null,
     external: null,
@@ -56,7 +53,7 @@ const DetailContainer = ({ location, history, match }) => {
     };
     fetchData();
   }, [pathname]);
-
+  console.log(state.result);
   return <DetailPresenter {...state} error={error} isMovie={isMovie} />;
 };
 
