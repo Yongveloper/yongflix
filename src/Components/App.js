@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Router from 'Components/Router';
-import GloablSyles from 'Components/GlobalStyle';
+import GloablSyles from 'Components/Common/GlobalStyle';
 
 class App extends Component {
   render() {

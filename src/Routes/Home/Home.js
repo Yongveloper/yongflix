@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { moviesApi } from 'api';
 import styled from 'styled-components';
 import Helmet from 'react-helmet';
-import Section from 'Components/Section';
-import Loader from 'Components/Loader';
-import Message from 'Components/Message';
-import MainBanner from 'Components/MainBanner';
-import Poster from 'Components/Poster';
+import Section from 'Components/Common/Section';
+import Loader from 'Components/Common/Loader';
+import Message from 'Components/Common/Message';
+import MainBanner from 'Components/Common/MainBanner';
+import Poster from 'Components/Common/Poster';
 
 const Container = styled.div`
   padding: 20px;

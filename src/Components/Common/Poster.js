@@ -78,7 +78,7 @@ const Poster = ({ id, imageUrl, title, rating, year, isMovie = false }) => (
           src={
             imageUrl
               ? `https://image.tmdb.org/t/p/w300${imageUrl}`
-              : require('../assets/noPosterSmall.png').default
+              : require('../../assets/noPosterSmall.png').default
           }
         />
         <DetailText>자세히 보기</DetailText>

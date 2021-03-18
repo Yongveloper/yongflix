@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { moviesApi, tvApi } from 'api';
 import styled from 'styled-components';
 import Helmet from 'react-helmet';
-import Loader from 'Components/Loader';
-import Section from 'Components/Section';
-import Message from 'Components/Message';
-import Poster from 'Components/Poster';
+import Loader from 'Components/Common/Loader';
+import Section from 'Components/Common/Section';
+import Message from 'Components/Common/Message';
+import Poster from 'Components/Common/Poster';
 
 const Containter = styled.div`
   padding: 20px;
