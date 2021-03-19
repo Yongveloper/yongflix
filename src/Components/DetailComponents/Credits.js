@@ -80,7 +80,7 @@ const Credits = ({ result, credits }) => (
                   }
                 />
                 <Item>{cast.name}</Item>
-                <Item>{cast.character}</Item>
+                <Item>{cast.character.substring(0, 15)}...</Item>
               </FlexContainer>
             </Container>
           ))}
