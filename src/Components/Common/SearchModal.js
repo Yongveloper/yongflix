@@ -23,9 +23,13 @@ const ModalMask = styled.div`
 
 const ModalWarpper = styled.div`
   display: ${(props) => (props.visible ? 'block' : 'none')};
-  width: 820px;
-  margin: 100px auto 0;
   position: relative;
+  top: 10%;
+  width: 820px;
+  margin: auto;
+  @media screen and (max-width: 890px) {
+    width: 80%;
+  }
 `;
 
 const SMdClose = styled(MdClose)`
@@ -43,6 +47,10 @@ const ModalContainer = styled.div`
   background-color: #252525;
   border-radius: 8px;
   overflow: hidden;
+  @media screen and (max-width: 450px) {
+    padding: 20px 30px;
+    height: 70vh;
+  }
 `;
 
 const Form = styled.form``;
@@ -50,7 +58,6 @@ const Form = styled.form``;
 const Input = styled.input`
   width: 100%;
   height: 51px;
-
   background: url(${searchImg}) no-repeat 0;
   font-size: 28px;
   color: #fff;
@@ -59,6 +66,9 @@ const Input = styled.input`
   border-bottom: 2px solid #2f2f2f;
   padding-left: 40px;
   outline: 0;
+  @media screen and (max-width: 580px) {
+    font-size: 18px;
+  }
 `;
 
 const SearchModal = ({ visible, onVisible }) => {
