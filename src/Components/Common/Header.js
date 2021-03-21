@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import styled from 'styled-components';
+import SearchModal from './SearchModal';
 
 const Header = styled.header`
   color: white;
@@ -37,18 +38,46 @@ const SLink = styled(Link)`
   justify-content: center;
 `;
 
-export default withRouter(({ location: { pathname } }) => (
-  <Header>
-    <List>
-      <Item current={pathname === '/'}>
-        <SLink to="/">영화</SLink>
-      </Item>
-      <Item current={pathname === '/tv'}>
-        <SLink to="/tv">TV</SLink>
-      </Item>
-      <Item current={pathname === '/search'}>
-        <SLink to="/search">검색</SLink>
-      </Item>
-    </List>
-  </Header>
-));
+const Search = styled.div`
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+`;
+
+export default withRouter(({ location: { pathname } }) => {
+  const [visible, setVisible] = useState(false);
+
+  const onVisible = () => {
+    setVisible((visible) => !visible);
+  };
+
+  useEffect(() => {
+    if (visible) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [visible]);
+
+  return (
+    <Header>
+      <List>
+        <Item current={pathname === '/'}>
+          <SLink to="/">영화</SLink>
+        </Item>
+        <Item current={pathname === '/tv'}>
+          <SLink to="/tv">TV</SLink>
+        </Item>
+        <Item current={pathname === '/search'}>
+          <SLink to="/search">검색</SLink>
+        </Item>
+        <Item>
+          <Search onClick={onVisible}>검색창</Search>
+        </Item>
+      </List>
+      <SearchModal visible={visible} onVisible={onVisible} />
+    </Header>
+  );
+});
