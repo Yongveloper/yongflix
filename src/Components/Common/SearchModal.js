@@ -16,7 +16,6 @@ const boxFade = keyframes`
 `;
 
 const ModalMask = styled.div`
-  display: ${(props) => (props.visible ? 'block' : 'none')};
   width: 100vw;
   height: 100vh;
   position: fixed;
@@ -32,7 +31,6 @@ const ModalMask = styled.div`
 `;
 
 const ModalWarpper = styled.div`
-  display: ${(props) => (props.visible ? 'block' : 'none')};
   position: relative;
   top: 10%;
   width: 820px;
@@ -87,16 +85,16 @@ const Input = styled.input`
 
 const SearchModal = ({ visible, onVisible }) => {
   const { history, location } = useReactRouter();
-  const [searchTerm, setSearchTerm] = useState('');
+  const [title, setTitle] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!searchTerm) {
+    if (!title) {
       alert('검색어를 입력해주세요.');
       return;
     }
     onVisible();
-    setSearchTerm('');
+    // setTitle('');
     if (location.pathname !== '/search') {
       history.push('/search');
     }
@@ -106,24 +104,27 @@ const SearchModal = ({ visible, onVisible }) => {
     const {
       target: { value },
     } = e;
-    setSearchTerm(value);
+    setTitle(value);
   };
 
   return (
-    <ModalMask visible={visible}>
-      <ModalWarpper visible={visible}>
-        <SMdClose onClick={() => onVisible()} />
-        <ModalContainer>
-          <Form onSubmit={handleSubmit}>
-            <Input
-              placeholder="검색어를 입력하세요."
-              value={searchTerm}
-              onChange={handleChange}
-            />
-          </Form>
-        </ModalContainer>
-      </ModalWarpper>
-    </ModalMask>
+    <>
+      <ModalMask visible={visible}>
+        <ModalWarpper visible={visible}>
+          <SMdClose onClick={() => onVisible()} />
+          <ModalContainer>
+            <Form onSubmit={handleSubmit}>
+              <Input
+                placeholder="검색어를 입력하세요."
+                value={title}
+                onChange={handleChange}
+              />
+            </Form>
+          </ModalContainer>
+        </ModalWarpper>
+      </ModalMask>
+      {location.pathname === '/search' && <Search title={title} />}
+    </>
   );
 };
 

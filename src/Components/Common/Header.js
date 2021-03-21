@@ -47,14 +47,14 @@ const Search = styled.div`
 `;
 
 export default withRouter(({ location: { pathname } }) => {
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(true);
 
   const onVisible = () => {
     setVisible((visible) => !visible);
   };
 
   useEffect(() => {
-    if (visible) {
+    if (!visible) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'unset';
@@ -62,22 +62,24 @@ export default withRouter(({ location: { pathname } }) => {
   }, [visible]);
 
   return (
-    <Header>
-      <List>
-        <Item current={pathname === '/'}>
-          <SLink to="/">영화</SLink>
-        </Item>
-        <Item current={pathname === '/tv'}>
-          <SLink to="/tv">TV</SLink>
-        </Item>
-        <Item current={pathname === '/search'}>
-          <SLink to="/search">검색</SLink>
-        </Item>
-        <Item>
-          <Search onClick={onVisible}>검색창</Search>
-        </Item>
-      </List>
-      <SearchModal visible={visible} onVisible={onVisible} />
-    </Header>
+    <>
+      <Header>
+        <List>
+          <Item current={pathname === '/'}>
+            <SLink to="/">영화</SLink>
+          </Item>
+          <Item current={pathname === '/tv'}>
+            <SLink to="/tv">TV</SLink>
+          </Item>
+          <Item current={pathname === '/search'}>
+            <SLink to="/search">검색</SLink>
+          </Item>
+          <Item>
+            <Search onClick={onVisible}>검색창</Search>
+          </Item>
+        </List>
+      </Header>
+      {!visible && <SearchModal visible={visible} onVisible={onVisible} />}
+    </>
   );
 });

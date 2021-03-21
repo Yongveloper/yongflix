@@ -11,6 +11,18 @@ const Containter = styled.div`
   padding: 20px;
 `;
 
+const SearchResult = styled.p`
+  padding-top: 30px;
+  padding-bottom: 80px;
+  text-align: center;
+  font-size: 28px;
+  color: rgb(165, 165, 165);
+`;
+
+const YellowText = styled.span`
+  color: #fff200;
+`;
+
 const Form = styled.form`
   width: 100%;
   margin-bottom: 50px;
@@ -19,7 +31,8 @@ const Form = styled.form`
 const Input = styled.input`
   all: unset;
   font-size: 28px;
-  width: 100%; ;
+  width: 100%;
+  text-align: center;
 `;
 
 const Search = () => {
@@ -30,12 +43,16 @@ const Search = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [searched, setSearched] = useState('');
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (searchTerm !== '') {
-      searchByterm();
+    if (searchTerm === '') {
+      alert('검색어를 입력해주세요.');
+      return;
     }
+    searchByterm();
+    setSearched(searchTerm);
   };
 
   const upadateTerm = (event) => {
@@ -80,6 +97,13 @@ const Search = () => {
         <Loader />
       ) : (
         <>
+          {searched && (
+            <SearchResult>
+              <YellowText>'{searched}'</YellowText> 전체 검색결과가{' '}
+              <YellowText>{movieResults.length + tvResults.length}</YellowText>
+              건 있습니다.
+            </SearchResult>
+          )}
           {movieResults && movieResults.length > 0 && (
             <Section title={`영화 검색 결과: ${movieResults.length}건`}>
               {movieResults.map((movie) => (
@@ -110,12 +134,6 @@ const Search = () => {
             </Section>
           )}
           {error && <Message color="#e74c3c" text={error} />}
-          {tvResults &&
-            movieResults &&
-            tvResults.length === 0 &&
-            movieResults.length === 0 && (
-              <Message text="검색 결과를 찾을 수 없습니다." color="#95a5a6" />
-            )}
         </>
       )}
     </Containter>
