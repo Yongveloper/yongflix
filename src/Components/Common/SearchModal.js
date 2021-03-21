@@ -66,6 +66,10 @@ const Input = styled.input`
   border-bottom: 2px solid #2f2f2f;
   padding-left: 40px;
   outline: 0;
+  &:focus {
+    border-bottom-color: #fff;
+  }
+
   @media screen and (max-width: 580px) {
     font-size: 18px;
   }
