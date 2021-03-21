@@ -64,8 +64,6 @@ const Search = () => {
 
   const { movieResults, tvResults } = data;
 
-  if (loading) return <Loader />;
-
   return (
     <Containter>
       <Helmet>
@@ -78,44 +76,48 @@ const Search = () => {
           onChange={upadateTerm}
         />
       </Form>
-      <>
-        {movieResults && movieResults.length > 0 && (
-          <Section title={`영화 검색 결과: ${movieResults.length}건`}>
-            {movieResults.map((movie) => (
-              <Poster
-                key={movie.id}
-                id={movie.id}
-                imageUrl={movie.poster_path}
-                title={movie.title}
-                rating={movie.vote_average}
-                year={movie.release_date}
-                isMovie={true}
-              />
-            ))}
-          </Section>
-        )}
-        {tvResults && tvResults.length > 0 && (
-          <Section title={`TV 검색 결과: ${tvResults.length}건`}>
-            {tvResults.map((show) => (
-              <Poster
-                key={show.id}
-                id={show.id}
-                imageUrl={show.poster_path}
-                title={show.name}
-                rating={show.vote_average}
-                year={show.first_air_date}
-              />
-            ))}
-          </Section>
-        )}
-        {error && <Message color="#e74c3c" text={error} />}
-        {tvResults &&
-          movieResults &&
-          tvResults.length === 0 &&
-          movieResults.length === 0 && (
-            <Message text="검색 결과를 찾을 수 없습니다." color="#95a5a6" />
+      {loading ? (
+        <Loader />
+      ) : (
+        <>
+          {movieResults && movieResults.length > 0 && (
+            <Section title={`영화 검색 결과: ${movieResults.length}건`}>
+              {movieResults.map((movie) => (
+                <Poster
+                  key={movie.id}
+                  id={movie.id}
+                  imageUrl={movie.poster_path}
+                  title={movie.title}
+                  rating={movie.vote_average}
+                  year={movie.release_date}
+                  isMovie={true}
+                />
+              ))}
+            </Section>
           )}
-      </>
+          {tvResults && tvResults.length > 0 && (
+            <Section title={`TV 검색 결과: ${tvResults.length}건`}>
+              {tvResults.map((show) => (
+                <Poster
+                  key={show.id}
+                  id={show.id}
+                  imageUrl={show.poster_path}
+                  title={show.name}
+                  rating={show.vote_average}
+                  year={show.first_air_date}
+                />
+              ))}
+            </Section>
+          )}
+          {error && <Message color="#e74c3c" text={error} />}
+          {tvResults &&
+            movieResults &&
+            tvResults.length === 0 &&
+            movieResults.length === 0 && (
+              <Message text="검색 결과를 찾을 수 없습니다." color="#95a5a6" />
+            )}
+        </>
+      )}
     </Containter>
   );
 };

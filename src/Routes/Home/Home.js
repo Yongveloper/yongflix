@@ -46,7 +46,6 @@ const Home = () => {
   const { nowPlaying, upcoming, popular } = data;
 
   if (loading) return <Loader />;
-  console.log(upcoming);
   return (
     <>
       <Helmet>

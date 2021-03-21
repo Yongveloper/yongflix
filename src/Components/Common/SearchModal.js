@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import useReactRouter from 'use-react-router';
+import Search from '../../Routes/Search';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { MdClose } from 'react-icons/md';
@@ -60,13 +62,23 @@ const Input = styled.input`
 `;
 
 const SearchModal = ({ visible, onVisible }) => {
+  const { history, location } = useReactRouter();
   const [searchTerm, setSearchTerm] = useState('');
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!searchTerm) {
+      alert('검색어를 입력해주세요.');
+      return;
+    }
+    onVisible();
     setSearchTerm('');
+    if (location.pathname !== '/search') {
+      history.push('/search');
+    }
   };
 
-  const onChange = (e) => {
+  const handleChange = (e) => {
     const {
       target: { value },
     } = e;
@@ -82,7 +94,7 @@ const SearchModal = ({ visible, onVisible }) => {
             <Input
               placeholder="검색어를 입력하세요."
               value={searchTerm}
-              onChange={onChange}
+              onChange={handleChange}
             />
           </Form>
         </ModalContainer>

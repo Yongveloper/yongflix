@@ -19,6 +19,6 @@ const Container = styled.div`
   }
 `;
 
-const Loader = () => <Container></Container>;
+const Loader = () => <Container />;
 
 export default Loader;
