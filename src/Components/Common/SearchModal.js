@@ -2,9 +2,18 @@ import React, { useState } from 'react';
 import useReactRouter from 'use-react-router';
 import Search from '../../Routes/Search';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { MdClose } from 'react-icons/md';
 import searchImg from '../../assets/search.png';
+
+const boxFade = keyframes`
+  from {
+    opacity: 0;
+  } 
+  to {
+    opacity: 1;
+  }
+`;
 
 const ModalMask = styled.div`
   display: ${(props) => (props.visible ? 'block' : 'none')};
@@ -19,6 +28,7 @@ const ModalMask = styled.div`
   overflow: auto;
   outline: 0;
   background-color: rgba(0, 0, 0, 0.5);
+  animation: ${boxFade} 0.2s ease;
 `;
 
 const ModalWarpper = styled.div`
