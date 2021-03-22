@@ -99,7 +99,7 @@ const Imdb = styled.a`
   background-color: #fcd700;
   color: rgb(20, 20, 20, 1);
   border-radius: 5px;
-  padding: 0 5px;
+  padding: 3px 5px 0px 5px;
   &:hover {
     opacity: 0.7;
   }
