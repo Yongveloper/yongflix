@@ -99,16 +99,14 @@ const Imdb = styled.a`
   background-color: #fcd700;
   color: rgb(20, 20, 20, 1);
   border-radius: 5px;
-  padding: 3px 5px 0px 5px;
+  padding: 0 5px;
   &:hover {
     opacity: 0.7;
   }
   transition: opacity 0.1s linear;
 `;
 
-const Subtitle = styled.h2`
-  font-size: 15px;
-`;
+const Subtitle = styled.h2``;
 
 const SlideContainer = styled.div`
   padding: 20px;

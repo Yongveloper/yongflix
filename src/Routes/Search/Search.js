@@ -8,7 +8,11 @@ import Message from 'Components/Common/Message';
 import Poster from 'Components/Common/Poster';
 
 const Containter = styled.div`
-  padding: 20px;
+  padding-bottom: 20px;
+`;
+
+const ResultContainer = styled.div`
+  padding: 0 20px;
 `;
 
 const SearchResult = styled.p`
@@ -25,12 +29,14 @@ const YellowText = styled.span`
 
 const Form = styled.form`
   width: 100%;
+  padding: 26px 0;
   margin-bottom: 50px;
+  background-color: #101010;
 `;
 
 const Input = styled.input`
   all: unset;
-  font-size: 28px;
+  font-size: 32px;
   width: 100%;
   text-align: center;
 `;
@@ -96,7 +102,7 @@ const Search = () => {
       {loading ? (
         <Loader />
       ) : (
-        <>
+        <ResultContainer>
           {searched && (
             <SearchResult>
               <YellowText>'{searched}'</YellowText> 전체 검색결과가{' '}
@@ -134,7 +140,7 @@ const Search = () => {
             </Section>
           )}
           {error && <Message color="#e74c3c" text={error} />}
-        </>
+        </ResultContainer>
       )}
     </Containter>
   );

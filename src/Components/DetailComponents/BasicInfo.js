@@ -1,6 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
+const Container = styled.div`
+  font-size: 18px;
+`;
+
 const Item = styled.span``;
 
 const ItemContainer = styled.div`
@@ -12,13 +16,12 @@ const Divider = styled.span`
 `;
 
 const Overview = styled.p`
-  font-size: 15px;
   opacity: 0.7;
   line-height: 1.5;
 `;
 
 const BasicInfo = ({ result }) => (
-  <>
+  <Container>
     <ItemContainer>
       <Item>
         {result.release_date
@@ -49,7 +52,7 @@ const BasicInfo = ({ result }) => (
     <Overview>
       {result.overview ? result.overview : '등록된 소개글이 없습니다.'}
     </Overview>
-  </>
+  </Container>
 );
 
 export default BasicInfo;

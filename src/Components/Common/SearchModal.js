@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import useReactRouter from 'use-react-router';
-import Search from '../../Routes/Search';
 import PropTypes from 'prop-types';
 import styled, { keyframes } from 'styled-components';
 import { MdClose } from 'react-icons/md';

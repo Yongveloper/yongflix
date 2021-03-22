@@ -14,11 +14,10 @@ const Container = styled.div`
 
 const TV = () => {
   const [data, setData] = useState({
-    topRated: null,
-    popular: null,
+    onTheAir: null,
     airingToday: null,
-    error: null,
-    loading: true,
+    popular: null,
+    topRated: null,
   });
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -27,15 +26,18 @@ const TV = () => {
     const fetchTvData = async () => {
       try {
         const {
-          data: { results: topRated },
-        } = await tvApi.topRated();
+          data: { results: onTheAir },
+        } = await tvApi.onTheAir();
+        const {
+          data: { results: airingToday },
+        } = await tvApi.airingToday();
         const {
           data: { results: popular },
         } = await tvApi.popular();
         const {
-          data: { results: airingToday },
-        } = await tvApi.airingToday();
-        setData({ topRated, popular, airingToday });
+          data: { results: topRated },
+        } = await tvApi.topRated();
+        setData({ onTheAir, airingToday, popular, topRated });
       } catch {
         setError('TV 정보를 찾을 수 없습니다.');
       } finally {
@@ -45,7 +47,7 @@ const TV = () => {
     fetchTvData();
   }, []);
 
-  const { topRated, popular, airingToday } = data;
+  const { onTheAir, airingToday, popular, topRated } = data;
 
   if (loading) return <Loader />;
 
@@ -58,9 +60,23 @@ const TV = () => {
         <>
           <MainBanner popular={popular} isMovie={false} />
           <Container>
-            {topRated && topRated.length > 0 && (
-              <Section title="최고 평점 TV">
-                {topRated.map((show) => (
+            {onTheAir && onTheAir.length > 0 && (
+              <Section title="오늘 방영 TV">
+                {onTheAir.map((show) => (
+                  <Poster
+                    key={show.id}
+                    id={show.id}
+                    imageUrl={show.poster_path}
+                    title={show.name}
+                    rating={show.vote_average}
+                    year={show.first_air_date.substring(0, 4)}
+                  />
+                ))}
+              </Section>
+            )}
+            {airingToday && airingToday.length > 0 && (
+              <Section title="현재 방영중 TV">
+                {airingToday.map((show) => (
                   <Poster
                     key={show.id}
                     id={show.id}
@@ -86,9 +102,9 @@ const TV = () => {
                 ))}
               </Section>
             )}
-            {airingToday && airingToday.length > 0 && (
-              <Section title="현재 방영중">
-                {airingToday.map((show) => (
+            {topRated && topRated.length > 0 && (
+              <Section title="최고 평점 TV">
+                {topRated.map((show) => (
                   <Poster
                     key={show.id}
                     id={show.id}

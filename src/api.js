@@ -9,9 +9,30 @@ const api = axios.create({
 });
 
 export const moviesApi = {
-  nowPlaying: () => api.get('movie/now_playing'),
-  upcoming: () => api.get('movie/upcoming'),
-  popular: () => api.get('movie/popular'),
+  nowPlaying: () =>
+    api.get('movie/now_playing', {
+      params: {
+        region: 'KR',
+      },
+    }),
+  upcoming: () =>
+    api.get('movie/upcoming', {
+      params: {
+        region: 'KR',
+      },
+    }),
+  popular: () =>
+    api.get('movie/popular', {
+      params: {
+        region: 'KR',
+      },
+    }),
+  topRated: () =>
+    api.get('/movie/top_rated', {
+      params: {
+        region: 'KR',
+      },
+    }),
   moiveDetail: (id) =>
     api.get(`movie/${id}`, {
       params: {
@@ -22,17 +43,14 @@ export const moviesApi = {
   credits: (id) => api.get(`movie/${id}/credits`),
   similar: (id) => api.get(`/movie/${id}/similar`),
   search: (term) =>
-    api.get('search/movie', {
-      params: {
-        query: term,
-      },
-    }),
+    api.get('search/movie', { params: { query: term, region: 'KR' } }),
 };
 
 export const tvApi = {
   topRated: () => api.get('tv/top_rated'),
   popular: () => api.get('tv/popular'),
   airingToday: () => api.get('tv/airing_today'),
+  onTheAir: () => api.get('/tv/on_the_air'),
   showDetail: (id) =>
     api.get(`tv/${id}`, {
       params: {

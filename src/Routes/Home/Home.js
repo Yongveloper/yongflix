@@ -17,6 +17,7 @@ const Home = () => {
     nowPlaying: null,
     upcoming: null,
     popular: null,
+    topRated: null,
   });
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -33,7 +34,10 @@ const Home = () => {
         const {
           data: { results: popular },
         } = await moviesApi.popular();
-        setData({ nowPlaying, upcoming, popular });
+        const {
+          data: { results: topRated },
+        } = await moviesApi.topRated();
+        setData({ nowPlaying, upcoming, popular, topRated });
       } catch {
         setError('영화의 정보를 찾을 수 없습니다.');
       } finally {
@@ -43,7 +47,7 @@ const Home = () => {
     fetchMovieData();
   }, []);
 
-  const { nowPlaying, upcoming, popular } = data;
+  const { nowPlaying, upcoming, popular, topRated } = data;
 
   if (loading) return <Loader />;
   return (
@@ -91,6 +95,21 @@ const Home = () => {
             {popular && popular.length > 0 && (
               <Section title="인기 영화">
                 {popular.map((movie) => (
+                  <Poster
+                    key={movie.id}
+                    id={movie.id}
+                    imageUrl={movie.poster_path}
+                    title={movie.title}
+                    rating={movie.vote_average}
+                    year={movie.release_date.substring(0, 4)}
+                    isMovie={true}
+                  />
+                ))}
+              </Section>
+            )}
+            {topRated && topRated.length > 0 && (
+              <Section title="평점 높은 영화">
+                {topRated.map((movie) => (
                   <Poster
                     key={movie.id}
                     id={movie.id}
