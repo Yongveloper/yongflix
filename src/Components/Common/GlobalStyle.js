@@ -8,7 +8,7 @@ const globalStyles = createGlobalStyle`
     ${reset};
     @font-face {
     font-family: 'Gmarket Sans';
-    src: url(${GmarketSansTTFMedium}) format('truetype');
+    src: url(${GmarketSansTTFMedium}) format('woff2');
     font-weight: 300;
     font-style: normal;
     font-display: auto;

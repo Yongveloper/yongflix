@@ -14,46 +14,45 @@ const DetailContainer = ({ location, history, match }) => {
 
   const { pathname } = location;
   const isMovie = pathname.includes('/movie/');
+  const {
+    params: { id },
+  } = match;
+  const parsedId = parseInt(id);
+  const { push } = history;
+
+  const fetchData = async () => {
+    if (isNaN(parsedId)) {
+      return push('/');
+    }
+    let result = null;
+    let external = null;
+    let credits = null;
+    let similar = null;
+    try {
+      if (isMovie) {
+        ({ data: result } = await moviesApi.moiveDetail(parsedId));
+        ({ data: external } = await moviesApi.external(parsedId));
+        ({ data: credits } = await moviesApi.credits(parsedId));
+        ({ data: similar } = await moviesApi.similar(parsedId));
+      } else {
+        ({ data: result } = await tvApi.showDetail(parsedId));
+        ({ data: external } = await tvApi.external(parsedId));
+        ({ data: credits } = await tvApi.credits(parsedId));
+        ({ data: similar } = await tvApi.similar(parsedId));
+      }
+    } catch {
+      setError('검색결과를 찾지 못했습니다.');
+    } finally {
+      setState({ result, external, credits, similar, loading: false });
+    }
+  };
 
   useEffect(() => {
     if (!state.loading) {
       setState((prevState) => ({ ...prevState, loading: true }));
     }
-    const fetchData = async () => {
-      const {
-        params: { id },
-      } = match;
-      const { push } = history;
-
-      const parsedId = parseInt(id);
-      if (isNaN(parsedId)) {
-        return push('/');
-      }
-      let result = null;
-      let external = null;
-      let credits = null;
-      let similar = null;
-      try {
-        if (isMovie) {
-          ({ data: result } = await moviesApi.moiveDetail(parsedId));
-          ({ data: external } = await moviesApi.external(parsedId));
-          ({ data: credits } = await moviesApi.credits(parsedId));
-          ({ data: similar } = await moviesApi.similar(parsedId));
-        } else {
-          ({ data: result } = await tvApi.showDetail(parsedId));
-          ({ data: external } = await tvApi.external(parsedId));
-          ({ data: credits } = await tvApi.credits(parsedId));
-          ({ data: similar } = await tvApi.similar(parsedId));
-        }
-      } catch {
-        setError('검색결과를 찾지 못했습니다.');
-      } finally {
-        setState({ result, external, credits, similar, loading: false });
-      }
-    };
     fetchData();
   }, [pathname]);
-  console.log(state.result);
   return <DetailPresenter {...state} error={error} isMovie={isMovie} />;
 };
 

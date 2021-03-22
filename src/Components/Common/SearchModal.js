@@ -124,7 +124,6 @@ const SearchModal = ({ visible, onVisible }) => {
           </ModalContainer>
         </ModalWarpper>
       </ModalMask>
-      {location.pathname === '/search' && <Search title={title} />}
     </>
   );
 };
