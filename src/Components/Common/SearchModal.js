@@ -67,6 +67,7 @@ const Input = styled.input`
   width: 100%;
   height: 51px;
   background: url(${searchImg}) no-repeat 0;
+  font-family: 'Gmarket Sans';
   font-size: 28px;
   color: #fff;
   border-radius: 0;
