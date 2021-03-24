@@ -44,7 +44,7 @@ const Search = styled.div`
   align-items: center;
   justify-content: center;
   background: url(${searchImg}) no-repeat 0;
-  padding: 0 40px;
+  padding: 0 30px;
   color: #a5a5a5;
   cursor: pointer;
 `;
