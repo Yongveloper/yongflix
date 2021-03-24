@@ -35,7 +35,7 @@ const Seasons = ({ result }) => (
     <Title>관련 시리즈</Title>
     <Slider {...settings}>
       {result.seasons.map((season) => (
-        <Content>
+        <Content key={season.id}>
           <FlexContainer>
             <Image
               src={

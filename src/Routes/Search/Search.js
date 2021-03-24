@@ -45,7 +45,6 @@ const Search = ({ match, history }) => {
   const {
     params: { term },
   } = match;
-  console.log(term);
   const [data, setData] = useState({
     movieResults: null,
     tvResults: null,
@@ -61,8 +60,8 @@ const Search = ({ match, history }) => {
       alert('검색어를 입력해주세요.');
       return;
     }
-    history.push(`/search/${searchTerm}`);
     setSearched(searchTerm);
+    history.push(`/search/${searchTerm}`);
   };
 
   const upadateTerm = (event) => {
@@ -72,15 +71,14 @@ const Search = ({ match, history }) => {
     setSearchTerm(value);
   };
 
-  const searchByterm = async () => {
-    setLoading(true);
+  const searchByterm = async (title) => {
     try {
       const {
         data: { results: movieResults },
-      } = await moviesApi.search(searchTerm);
+      } = await moviesApi.search(title);
       const {
         data: { results: tvResults },
-      } = await tvApi.search(searchTerm);
+      } = await tvApi.search(title);
       setData({ movieResults, tvResults });
     } catch {
       setError('검색 결과가 없습니다.');
@@ -90,10 +88,10 @@ const Search = ({ match, history }) => {
   };
 
   useEffect(() => {
-    console.log('렌더링 됨');
+    setLoading(true);
     setSearchTerm(term);
-    setSearched(searchTerm);
-    searchByterm();
+    setSearched(term);
+    searchByterm(term);
   }, [term]);
 
   const { movieResults, tvResults } = data;

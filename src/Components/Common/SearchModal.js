@@ -66,7 +66,7 @@ const Input = styled.input`
   width: 100%;
   height: 51px;
   background: url(${searchImg}) no-repeat 0;
-  font-family: 'Gmarket Sans';
+  font-family: 'Noto Sans KR', sans-serif;
   font-size: 28px;
   color: #fff;
   border-radius: 0;
@@ -84,7 +84,7 @@ const Input = styled.input`
 `;
 
 const SearchModal = ({ visible, onVisible }) => {
-  const { history, location } = useReactRouter();
+  const { history } = useReactRouter();
   const [term, setTerm] = useState('');
 
   const handleSubmit = (e) => {

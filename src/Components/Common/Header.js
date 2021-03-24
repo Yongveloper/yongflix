@@ -2,16 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 import SearchModal from './SearchModal';
+import searchImg from '../../assets/search.png';
 
 const Header = styled.header`
-  color: white;
   position: fixed;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
   top: 0;
   left: 0;
   width: 100%;
   height: 50px;
-  display: flex;
-  align-items: center;
   background-color: rgb(20, 20, 20, 0.8);
   z-index: 10;
   box-shadow: 0px 1px 5px 2px rgba(0, 0, 0, 0.8);
@@ -43,6 +44,9 @@ const Search = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  background: url(${searchImg}) no-repeat 0;
+  padding-left: 40px;
+  color: #a5a5a5;
   cursor: pointer;
 `;
 
@@ -71,13 +75,8 @@ export default withRouter(({ location: { pathname } }) => {
           <Item current={pathname === '/tv'}>
             <SLink to="/tv">TV</SLink>
           </Item>
-          <Item current={pathname === '/search'}>
-            <SLink to="/search">검색</SLink>
-          </Item>
-          <Item>
-            <Search onClick={onVisible}>검색창</Search>
-          </Item>
         </List>
+        <Search onClick={onVisible}>검색하기</Search>
       </Header>
       {!visible && <SearchModal visible={visible} onVisible={onVisible} />}
     </>

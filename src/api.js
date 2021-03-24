@@ -5,34 +5,15 @@ const api = axios.create({
   params: {
     api_key: '17603f87d6ac9f83a2905f12c9f181b9',
     language: 'ko-KR',
+    region: 'KR',
   },
 });
 
 export const moviesApi = {
-  nowPlaying: () =>
-    api.get('movie/now_playing', {
-      params: {
-        region: 'KR',
-      },
-    }),
-  upcoming: () =>
-    api.get('movie/upcoming', {
-      params: {
-        region: 'KR',
-      },
-    }),
-  popular: () =>
-    api.get('movie/popular', {
-      params: {
-        region: 'KR',
-      },
-    }),
-  topRated: () =>
-    api.get('/movie/top_rated', {
-      params: {
-        region: 'KR',
-      },
-    }),
+  nowPlaying: () => api.get('movie/now_playing'),
+  upcoming: () => api.get('movie/upcoming'),
+  popular: () => api.get('movie/popular'),
+  topRated: () => api.get('/movie/top_rated'),
   moiveDetail: (id) =>
     api.get(`movie/${id}`, {
       params: {
