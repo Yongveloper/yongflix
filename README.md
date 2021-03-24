@@ -13,9 +13,10 @@ React and ES6 by building a Popcorn Time Clone. (Movie and TV Shows Discovery Ap
 
 - [x] Now playing (Moive)
 - [x] Upcoming (Moive)
-- [x] Top Rated (TV)
-- [x] Popular (TV, X)
+- [x] Top Rated (Movie, TV)
+- [x] Popular (Movie, TV)
 - [x] Airing Today (TV)
+- [x] On the Air (TV)
 - [x] TV Show Detail
 - [x] Movie Detail
 - [x] Search (Moive, TV)
@@ -27,8 +28,6 @@ React and ES6 by building a Popcorn Time Clone. (Movie and TV Shows Discovery Ap
 
 - [x] IMDB Link
 - [x] Tabs inside of Movie / show Details (YT Videos, Production Company & Countries)
-- [ ] Collections Link
-- [ ] /collections Route
 - [x] On TV Show, show seasons and creators
 
 # Preview:

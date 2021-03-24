@@ -3,6 +3,9 @@ import styled from 'styled-components';
 
 const Container = styled.div`
   font-size: 18px;
+  @media screen and (max-width: 480px) {
+    font-size: 15px;
+  }
 `;
 
 const Item = styled.span``;
