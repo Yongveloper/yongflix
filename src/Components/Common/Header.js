@@ -8,7 +8,6 @@ const Header = styled.header`
   position: fixed;
   display: flex;
   justify-content: space-between;
-  padding: 0 20px;
   top: 0;
   left: 0;
   width: 100%;
@@ -45,7 +44,7 @@ const Search = styled.div`
   align-items: center;
   justify-content: center;
   background: url(${searchImg}) no-repeat 0;
-  padding-left: 40px;
+  padding: 0 40px;
   color: #a5a5a5;
   cursor: pointer;
 `;
