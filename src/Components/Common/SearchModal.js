@@ -85,26 +85,23 @@ const Input = styled.input`
 
 const SearchModal = ({ visible, onVisible }) => {
   const { history, location } = useReactRouter();
-  const [title, setTitle] = useState('');
+  const [term, setTerm] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!title) {
+    if (!term) {
       alert('검색어를 입력해주세요.');
       return;
     }
     onVisible();
-    // setTitle('');
-    if (location.pathname !== '/search') {
-      history.push('/search');
-    }
+    history.push(`/search/${term}`);
   };
 
   const handleChange = (e) => {
     const {
       target: { value },
     } = e;
-    setTitle(value);
+    setTerm(value);
   };
 
   return (
@@ -116,7 +113,7 @@ const SearchModal = ({ visible, onVisible }) => {
             <Form onSubmit={handleSubmit}>
               <Input
                 placeholder="검색어를 입력하세요."
-                value={title}
+                value={term}
                 onChange={handleChange}
               />
             </Form>

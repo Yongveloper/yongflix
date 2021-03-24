@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { moviesApi, tvApi } from 'api';
 import styled from 'styled-components';
 import Helmet from 'react-helmet';
@@ -41,12 +41,16 @@ const Input = styled.input`
   text-align: center;
 `;
 
-const Search = () => {
+const Search = ({ match, history }) => {
+  const {
+    params: { term },
+  } = match;
+  console.log(term);
   const [data, setData] = useState({
     movieResults: null,
     tvResults: null,
   });
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState(term);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [searched, setSearched] = useState('');
@@ -57,7 +61,7 @@ const Search = () => {
       alert('검색어를 입력해주세요.');
       return;
     }
-    searchByterm();
+    history.push(`/search/${searchTerm}`);
     setSearched(searchTerm);
   };
 
@@ -84,6 +88,13 @@ const Search = () => {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    console.log('렌더링 됨');
+    setSearchTerm(term);
+    setSearched(searchTerm);
+    searchByterm();
+  }, [term]);
 
   const { movieResults, tvResults } = data;
 

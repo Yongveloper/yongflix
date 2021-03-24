@@ -18,8 +18,8 @@ const Routers = () => (
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/tv" component={TV} />
+        <Route path="/search/:term" exact component={Search} />
         <Route path="/search" component={Search} />
-        <Route path="/search/:term" component={Search} />
         <Route path="/movie/:id" component={Detail} />
         <Route path="/show/:id" component={Detail} />
         <Redirect from="*" to="/" />
