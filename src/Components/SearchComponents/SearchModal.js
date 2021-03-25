@@ -39,7 +39,7 @@ const ModalWarpper = styled.div`
   }
 `;
 
-const SMdClose = styled(MdClose)`
+const ModalCloseBtn = styled(MdClose)`
   position: absolute;
   right: -36px;
   top: 0;
@@ -83,7 +83,22 @@ const Input = styled.input`
   }
 `;
 
-const ResentContainer = styled.div``;
+const ResentContainer = styled.div`
+  padding-top: 30px;
+  color: #a5a5a5;
+`;
+
+const ResentTitle = styled.div`
+  font-weight: 700;
+  font-size: 20px;
+  margin-bottom: 15px;
+`;
+
+const SearchedList = styled.ul``;
+
+const SearchedItem = styled.li`
+  margin-bottom: 9px;
+`;
 
 const SearchModal = ({ visible, onVisible }) => {
   const { history } = useReactRouter();
@@ -110,7 +125,7 @@ const SearchModal = ({ visible, onVisible }) => {
     <>
       <ModalMask visible={visible}>
         <ModalWarpper visible={visible}>
-          <SMdClose onClick={() => onVisible()} />
+          <ModalCloseBtn onClick={() => onVisible()} />
           <ModalContainer>
             <Form onSubmit={handleSubmit}>
               <Input
@@ -119,7 +134,13 @@ const SearchModal = ({ visible, onVisible }) => {
                 onChange={handleChange}
               />
             </Form>
-            <ResentContainer>adf</ResentContainer>
+            <ResentContainer>
+              <ResentTitle>최근 검색어</ResentTitle>
+              <SearchedList>
+                <SearchedItem>123</SearchedItem>
+                <SearchedItem>123</SearchedItem>
+              </SearchedList>
+            </ResentContainer>
           </ModalContainer>
         </ModalWarpper>
       </ModalMask>
