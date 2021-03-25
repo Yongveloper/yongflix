@@ -83,6 +83,8 @@ const Input = styled.input`
   }
 `;
 
+const ResentContainer = styled.div``;
+
 const SearchModal = ({ visible, onVisible }) => {
   const { history } = useReactRouter();
   const [term, setTerm] = useState('');
@@ -117,6 +119,7 @@ const SearchModal = ({ visible, onVisible }) => {
                 onChange={handleChange}
               />
             </Form>
+            <ResentContainer>adf</ResentContainer>
           </ModalContainer>
         </ModalWarpper>
       </ModalMask>
