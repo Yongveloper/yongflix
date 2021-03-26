@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import useReactRouter from 'use-react-router';
 import PropTypes from 'prop-types';
 import styled, { keyframes } from 'styled-components';
@@ -15,6 +16,7 @@ const boxFade = keyframes`
 `;
 
 const ModalMask = styled.div`
+  display: ${(props) => (props.visible ? 'none' : 'block')};
   width: 100vw;
   height: 100vh;
   position: fixed;
@@ -53,10 +55,8 @@ const ModalContainer = styled.div`
   padding: 40px 70px 0;
   background-color: #252525;
   border-radius: 8px;
-  overflow: hidden;
   @media screen and (max-width: 480px) {
     padding: 20px 30px;
-    height: 70vh;
   }
 `;
 
@@ -64,7 +64,7 @@ const Form = styled.form``;
 
 const Input = styled.input`
   width: 100%;
-  height: 51px;
+  height: 50px;
   background: url(${searchImg}) no-repeat 0;
   font-family: 'Noto Sans KR', sans-serif;
   font-size: 28px;
@@ -91,18 +91,27 @@ const ResentContainer = styled.div`
 const ResentTitle = styled.div`
   font-weight: 700;
   font-size: 20px;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 `;
 
-const SearchedList = styled.ul``;
+const SearchedList = styled.ul`
+  height: 360px;
+  overflow-y: auto;
+`;
 
 const SearchedItem = styled.li`
-  margin-bottom: 9px;
+  margin-bottom: 12px;
+  &:hover {
+    color: #fff;
+  }
 `;
 
 const SearchModal = ({ visible, onVisible }) => {
   const { history } = useReactRouter();
   const [term, setTerm] = useState('');
+  const [searched, setSearched] = useState(
+    JSON.parse(localStorage.getItem('saveHistory')) || []
+  );
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -110,6 +119,8 @@ const SearchModal = ({ visible, onVisible }) => {
       alert('검색어를 입력해주세요.');
       return;
     }
+    setSearched([...searched, term]);
+    setTerm('');
     onVisible();
     history.push(`/search/${term}`);
   };
@@ -121,30 +132,37 @@ const SearchModal = ({ visible, onVisible }) => {
     setTerm(value);
   };
 
+  useEffect(() => {
+    localStorage.setItem('saveHistory', JSON.stringify(searched));
+  }, [searched]);
+
   return (
-    <>
-      <ModalMask visible={visible}>
-        <ModalWarpper visible={visible}>
-          <ModalCloseBtn onClick={() => onVisible()} />
-          <ModalContainer>
-            <Form onSubmit={handleSubmit}>
-              <Input
-                placeholder="검색어를 입력하세요."
-                value={term}
-                onChange={handleChange}
-              />
-            </Form>
-            <ResentContainer>
-              <ResentTitle>최근 검색어</ResentTitle>
-              <SearchedList>
-                <SearchedItem>123</SearchedItem>
-                <SearchedItem>123</SearchedItem>
-              </SearchedList>
-            </ResentContainer>
-          </ModalContainer>
-        </ModalWarpper>
-      </ModalMask>
-    </>
+    <ModalMask visible={visible}>
+      <ModalWarpper>
+        <ModalCloseBtn onClick={onVisible} />
+        <ModalContainer>
+          <Form onSubmit={handleSubmit}>
+            <Input
+              placeholder="검색어를 입력하세요."
+              value={term}
+              onChange={handleChange}
+            />
+          </Form>
+          <ResentContainer>
+            <ResentTitle>최근 검색어</ResentTitle>
+            <SearchedList>
+              {searched.length > 0
+                ? searched.map((item, i) => (
+                    <Link to={`/search/${item}`} onClick={onVisible}>
+                      <SearchedItem key={i}>{item}</SearchedItem>
+                    </Link>
+                  ))
+                : '최근 검색어가 없습니다.'}
+            </SearchedList>
+          </ResentContainer>
+        </ModalContainer>
+      </ModalWarpper>
+    </ModalMask>
   );
 };
 

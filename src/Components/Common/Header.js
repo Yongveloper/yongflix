@@ -77,7 +77,7 @@ export default withRouter(({ location: { pathname } }) => {
         </List>
         <Search onClick={onVisible}>검색하기</Search>
       </Header>
-      {!visible && <SearchModal visible={visible} onVisible={onVisible} />}
+      <SearchModal visible={visible} onVisible={onVisible} />
     </>
   );
 });

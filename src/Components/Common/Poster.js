@@ -39,7 +39,7 @@ const Rating = styled.span`
 const ImageContainer = styled.div`
   overflow: hidden;
   position: relative;
-  &: hover {
+  &:hover {
     ${Image} {
       transform: scale(1.06);
     }
@@ -49,7 +49,7 @@ const ImageContainer = styled.div`
     ${Rating},${DetailText} {
       opacity: 1;
     }
-  } ;
+  }
 `;
 
 const TitleContainer = styled.div`
