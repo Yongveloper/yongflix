@@ -107,10 +107,11 @@ const SearchedItem = styled.li`
 `;
 
 const SearchModal = ({ visible, onVisible }) => {
+  const LS = 'saveHistory';
   const { history } = useReactRouter();
   const [term, setTerm] = useState('');
   const [searched, setSearched] = useState(
-    JSON.parse(localStorage.getItem('saveHistory')) || []
+    JSON.parse(localStorage.getItem(LS)) || []
   );
 
   const handleSubmit = (e) => {
@@ -119,7 +120,7 @@ const SearchModal = ({ visible, onVisible }) => {
       alert('검색어를 입력해주세요.');
       return;
     }
-    setSearched([...searched, term]);
+    setSearched([term, ...searched]);
     setTerm('');
     onVisible();
     history.push(`/search/${term}`);
@@ -133,7 +134,7 @@ const SearchModal = ({ visible, onVisible }) => {
   };
 
   useEffect(() => {
-    localStorage.setItem('saveHistory', JSON.stringify(searched));
+    localStorage.setItem(LS, JSON.stringify(searched));
   }, [searched]);
 
   return (
@@ -153,8 +154,8 @@ const SearchModal = ({ visible, onVisible }) => {
             <SearchedList>
               {searched.length > 0
                 ? searched.map((item, i) => (
-                    <Link to={`/search/${item}`} onClick={onVisible}>
-                      <SearchedItem key={i}>{item}</SearchedItem>
+                    <Link to={`/search/${item}`} key={i} onClick={onVisible}>
+                      <SearchedItem>{item}</SearchedItem>
                     </Link>
                   ))
                 : '최근 검색어가 없습니다.'}
