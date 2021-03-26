@@ -44,9 +44,9 @@ const CastImage = styled.img`
 
 const Credits = ({ result, credits }) => (
   <>
-    {result.production_companies && result.production_companies.length > 0 && (
+    <Title>제작</Title>
+    {result.production_companies && result.production_companies.length > 0 ? (
       <CompaineContainer>
-        <Title>제작</Title>
         <StyledSlider {...settings}>
           {result.production_companies.map((company) => (
             <Container key={company.id}>
@@ -64,10 +64,12 @@ const Credits = ({ result, credits }) => (
           ))}
         </StyledSlider>
       </CompaineContainer>
+    ) : (
+      '등록된 제작사가 없습니다.'
     )}
-    {credits.cast && credits.cast.length > 0 && (
+    <Title>출연</Title>
+    {credits.cast && credits.cast.length > 0 ? (
       <CastContainer>
-        <Title>출연</Title>
         <StyledSlider {...settings}>
           {credits.cast.map((cast) => (
             <Container key={cast.cast_id ? cast.cast_id : cast.id}>
@@ -86,6 +88,8 @@ const Credits = ({ result, credits }) => (
           ))}
         </StyledSlider>
       </CastContainer>
+    ) : (
+      '등록된 출연진이 없습니다.'
     )}
   </>
 );
