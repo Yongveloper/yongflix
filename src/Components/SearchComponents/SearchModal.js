@@ -100,10 +100,20 @@ const SearchedList = styled.ul`
 `;
 
 const SearchedItem = styled.li`
+  display: flex;
+  align-items: center;
   margin-bottom: 12px;
+`;
+
+const SLink = styled(Link)`
+  margin-right: 10px;
   &:hover {
     color: #fff;
   }
+`;
+
+const SearchedRemoveBtn = styled(MdClose)`
+  cursor: pointer;
 `;
 
 const SearchModal = ({ visible, onVisible }) => {
@@ -133,6 +143,11 @@ const SearchModal = ({ visible, onVisible }) => {
     setTerm(value);
   };
 
+  const removeSearched = (term) => {
+    console.log(term);
+    setSearched(searched.filter((item) => item !== term));
+  };
+
   useEffect(() => {
     localStorage.setItem(LS, JSON.stringify(searched));
   }, [searched]);
@@ -154,9 +169,12 @@ const SearchModal = ({ visible, onVisible }) => {
             <SearchedList>
               {searched.length > 0
                 ? searched.map((item, i) => (
-                    <Link to={`/search/${item}`} key={i} onClick={onVisible}>
-                      <SearchedItem>{item}</SearchedItem>
-                    </Link>
+                    <SearchedItem key={i}>
+                      <SLink to={`/search/${item}`} onClick={onVisible}>
+                        {item}
+                      </SLink>
+                      <SearchedRemoveBtn onClick={() => removeSearched(item)} />
+                    </SearchedItem>
                   ))
                 : '최근 검색어가 없습니다.'}
             </SearchedList>
