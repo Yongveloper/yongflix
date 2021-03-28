@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import styled, { keyframes } from 'styled-components';
 import { MdClose } from 'react-icons/md';
 import searchImg from '../../assets/search.png';
+import thrashImg from '../../assets/thrash.png';
 
 const boxFade = keyframes`
   from {
@@ -94,6 +95,19 @@ const ResentTitle = styled.div`
   margin-bottom: 20px;
 `;
 
+const ThrashIcon = styled.img``;
+
+const AllRemoveBtn = styled.button`
+  display: flex;
+  font-family: 'NotoSans', sans-serif;
+  float: right;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  color: #a5a5a5;
+`;
+
 const SearchedList = styled.ul`
   height: 360px;
   overflow-y: auto;
@@ -143,6 +157,13 @@ const SearchModal = ({ visible, onVisible }) => {
     setTerm(value);
   };
 
+  const AllRemove = () => {
+    const check = window.confirm('최근 검색어를 모두 삭제 할까요?');
+    if (check) {
+      setSearched([]);
+    }
+  };
+
   const removeSearched = (term) => {
     setSearched(searched.filter((item) => item !== term));
   };
@@ -164,7 +185,15 @@ const SearchModal = ({ visible, onVisible }) => {
             />
           </Form>
           <ResentContainer>
-            <ResentTitle>최근 검색어</ResentTitle>
+            <ResentTitle>
+              최근 검색어{' '}
+              {searched.length > 0 && (
+                <AllRemoveBtn onClick={AllRemove}>
+                  <ThrashIcon src={thrashImg} />
+                  전체 내역 삭제
+                </AllRemoveBtn>
+              )}
+            </ResentTitle>
             <SearchedList>
               {searched.length > 0
                 ? searched.map((item, i) => (
