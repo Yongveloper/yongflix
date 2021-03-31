@@ -24,4 +24,4 @@ yarn-error.log*
 
 #API KEY
 .env
-.evn.production
+.env.production
