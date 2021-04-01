@@ -3,7 +3,7 @@ import reset from 'styled-reset';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-const globalStyles = createGlobalStyle`
+const GlobalStyles = createGlobalStyle`
     ${reset};
     * {
         box-sizing:border-box;
@@ -21,4 +21,4 @@ const globalStyles = createGlobalStyle`
     }
 `;
 
-export default globalStyles;
+export default GlobalStyles;

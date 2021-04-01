@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import Router from 'Components/Router';
-import GloablSyles from 'Components/Common/GlobalStyle';
+import GlobalStyles from 'Components/Common/GlobalStyles';
 
 class App extends Component {
   render() {
     return (
       <>
         <Router />
-        <GloablSyles />
+        <GlobalStyles />
       </>
     );
   }
