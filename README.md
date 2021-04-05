@@ -24,12 +24,6 @@ React and ES6 by building a Popcorn Time Clone. (Movie and TV Shows Discovery Ap
 - [x] Credits (Movie, TV)
 - [x] Similar (Movie, Tv)
 
-## Code Challenges
-
-- [x] IMDB Link
-- [x] Tabs inside of Movie / show Details (YT Videos, Production Company & Countries)
-- [x] On TV Show, show seasons and creators
-
 # Preview:
 
 Try it on [Netlify](https://yongflix.netlify.app)
