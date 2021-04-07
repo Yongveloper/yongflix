@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Helmet from 'react-helmet';
 import Loader from 'Components/Common/Loader';
 import Message from 'Components/Common/Message';
-import DetaileTabs from 'Components/DetailComponents/DetailTabs';
+import DetaileTabs from 'Components/Detail/DetailTabs';
 import Section from 'Components/Common/Section';
 import Poster from 'Components/Common/Poster';
 

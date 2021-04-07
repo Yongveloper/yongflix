@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import styled from 'styled-components';
-import SearchModal from '../SearchComponents/SearchModal';
+import SearchModal from '../Search/SearchModal';
 import searchImg from '../../assets/search.png';
 
 const Header = styled.header`
