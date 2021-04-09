@@ -47,6 +47,9 @@ const Search = styled.div`
   padding: 0 30px;
   color: #a5a5a5;
   cursor: pointer;
+  &:hover {
+    color: #fff;
+  }
 `;
 
 export default withRouter(({ location: { pathname } }) => {
