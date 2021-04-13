@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const Container = styled.div`
   font-size: 18px;
@@ -25,6 +26,7 @@ const Overview = styled.p`
 
 const BasicInfo = ({ result }) => (
   <Container>
+    {console.log(result)}
     <ItemContainer>
       <Item>
         {result.release_date
@@ -57,5 +59,17 @@ const BasicInfo = ({ result }) => (
     </Overview>
   </Container>
 );
+
+BasicInfo.propTypes = {
+  results: PropTypes.shape({
+    release_date: PropTypes.string,
+    first_air_date: PropTypes.string,
+    runtime: PropTypes.number,
+    episode_run_time: PropTypes.number,
+    genres: PropTypes.object,
+    production_countries: PropTypes.array,
+    overview: PropTypes.string,
+  }),
+};
 
 export default BasicInfo;
