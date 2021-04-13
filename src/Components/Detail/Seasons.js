@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import Slider from 'react-slick';
 import {
   FlexContainerStyle,
@@ -30,11 +31,12 @@ const Item = styled.span`
   ${ItemStyle}
 `;
 
-const Seasons = ({ result }) => (
+const Seasons = ({ result: { seasons } }) => (
   <Container>
+    {console.log(seasons)}
     <Title>관련 시리즈</Title>
     <Slider {...settings}>
-      {result.seasons.map((season) => (
+      {seasons.map((season) => (
         <Content key={season.id}>
           <FlexContainer>
             <Image
@@ -52,5 +54,9 @@ const Seasons = ({ result }) => (
     </Slider>
   </Container>
 );
+
+Seasons.propTypes = {
+  seasons: PropTypes.arrayOf(PropTypes.object),
+};
 
 export default Seasons;
