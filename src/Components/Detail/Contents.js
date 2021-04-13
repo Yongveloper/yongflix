@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import DetaileTabs from './DetailTabs';
-import Credits from './Credits';
 
 const Content = styled.div`
   position: relative;
