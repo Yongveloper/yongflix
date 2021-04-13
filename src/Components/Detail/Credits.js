@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import Slider from 'react-slick';
 import {
   FlexContainerStyle,
@@ -42,13 +43,13 @@ const CastImage = styled.img`
   border-radius: 8px;
 `;
 
-const Credits = ({ result, credits }) => (
+const Credits = ({ result: { production_companies }, credits: { cast } }) => (
   <>
     <Title>제작</Title>
-    {result.production_companies && result.production_companies.length > 0 ? (
+    {production_companies && production_companies.length > 0 ? (
       <CompaineContainer>
         <StyledSlider {...settings}>
-          {result.production_companies.map((company) => (
+          {production_companies.map((company) => (
             <Container key={company.id}>
               <FlexContainer>
                 <CompanyImage
@@ -68,10 +69,10 @@ const Credits = ({ result, credits }) => (
       '등록된 제작사가 없습니다.'
     )}
     <Title>출연</Title>
-    {credits.cast && credits.cast.length > 0 ? (
+    {cast && cast.length > 0 ? (
       <CastContainer>
         <StyledSlider {...settings}>
-          {credits.cast.map((cast) => (
+          {cast.map((cast) => (
             <Container key={cast.cast_id ? cast.cast_id : cast.id}>
               <FlexContainer>
                 <CastImage
@@ -93,5 +94,10 @@ const Credits = ({ result, credits }) => (
     )}
   </>
 );
+
+Credits.propTypes = {
+  production_companies: PropTypes.array,
+  creds: PropTypes.arrayOf(PropTypes.object),
+};
 
 export default Credits;
