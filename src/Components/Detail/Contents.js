@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import DetaileTabs from './DetailTabs';
+import Credits from './Credits';
 
 const Content = styled.div`
   position: relative;
@@ -110,8 +111,15 @@ const Contents = ({ result, external, children }) => (
 );
 
 Contents.propTypes = {
-  result: PropTypes.object,
-  external: PropTypes.object,
+  result: PropTypes.shape({
+    poster_path: PropTypes.string,
+    title: PropTypes.string,
+    name: PropTypes.string,
+    tagline: PropTypes.string,
+  }),
+  external: PropTypes.shape({
+    imdb_id: PropTypes.string,
+  }),
   children: PropTypes.node.isRequired,
 };
 
