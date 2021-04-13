@@ -33,7 +33,6 @@ const Item = styled.span`
 
 const Seasons = ({ result: { seasons } }) => (
   <Container>
-    {console.log(seasons)}
     <Title>관련 시리즈</Title>
     <Slider {...settings}>
       {seasons.map((season) => (
