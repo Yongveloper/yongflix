@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import DetaileTabs from './DetailTabs';
 
 const Content = styled.div`
@@ -79,7 +80,7 @@ const Imdb = styled.a`
 
 const Subtitle = styled.h2``;
 
-const Contents = ({ result, external, credits, isMovie }) => (
+const Contents = ({ result, external, children }) => (
   <Content>
     <CoverContainer>
       <Cover
@@ -103,9 +104,15 @@ const Contents = ({ result, external, credits, isMovie }) => (
         </Title>
         <Subtitle>{result.tagline && result.tagline}</Subtitle>
       </TitleContainer>
-      <DetaileTabs result={result} credits={credits} isMovie={isMovie} />
+      {children}
     </Data>
   </Content>
 );
+
+Contents.propTypes = {
+  result: PropTypes.object,
+  external: PropTypes.object,
+  children: PropTypes.node.isRequired,
+};
 
 export default Contents;

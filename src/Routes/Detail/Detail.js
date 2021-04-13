@@ -7,6 +7,7 @@ import Message from 'Components/Common/Message';
 import Section from 'Components/Common/Section';
 import Poster from 'Components/Common/Poster';
 import Contents from 'Components/Detail/Contents';
+import DetaileTabs from 'Components/Detail/DetailTabs';
 
 const Container = styled.div`
   height: calc(100vh - 50px);
@@ -108,12 +109,9 @@ const DetailContainer = ({ location, history, match }) => {
       <Backdrop
         bgImage={`https://image.tmdb.org/t/p/original${result.backdrop_path}`}
       />
-      <Contents
-        result={result}
-        external={external}
-        credits={credits}
-        isMovie={isMovie}
-      />
+      <Contents result={result} external={external}>
+        <DetaileTabs result={result} credits={credits} isMovie={isMovie} />
+      </Contents>
       {similar.results.length > 0 && (
         <SlideContainer>
           <Section title={isMovie ? '비슷한 영화 추천' : '비슷한 TV 추천'}>
