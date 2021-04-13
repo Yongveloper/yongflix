@@ -26,7 +26,6 @@ const Overview = styled.p`
 
 const BasicInfo = ({ result }) => (
   <Container>
-    {console.log(result)}
     <ItemContainer>
       <Item>
         {result.release_date
