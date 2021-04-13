@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import BasicInfo from './BasicInfo';
 import Credits from './Credits';
 import Video from './Video';
@@ -108,6 +109,12 @@ const DetailTaps = ({ result, credits, isMovie }) => {
       </ContentContainer>
     </Container>
   );
+};
+
+DetailTaps.propTypes = {
+  result: PropTypes.object,
+  credits: PropTypes.object,
+  isMovie: PropTypes.bool.isRequired,
 };
 
 export default DetailTaps;
