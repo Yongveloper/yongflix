@@ -132,11 +132,5 @@ const DetailContainer = ({ location, history, match }) => {
     </Container>
   );
 };
-// DetailPresenter.propTypes = {
-//   result: PropTypes.object,
-//   external: PropTypes.object,
-//   credits: PropTypes.object,
-//   loading: PropTypes.bool.isRequired,
-//   error: PropTypes.string,
-// };
+
 export default DetailContainer;
