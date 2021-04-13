@@ -55,10 +55,10 @@ const DetailContainer = ({ location, history, match }) => {
     if (isNaN(parsedId)) {
       return push('/');
     }
-    let result = null;
-    let external = null;
-    let credits = null;
-    let similar = null;
+    let result = {};
+    let external = {};
+    let credits = {};
+    let similar = {};
     try {
       if (isMovie) {
         ({ data: result } = await moviesApi.moiveDetail(parsedId));
