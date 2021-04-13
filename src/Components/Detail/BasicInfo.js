@@ -66,7 +66,7 @@ BasicInfo.propTypes = {
     runtime: PropTypes.number,
     episode_run_time: PropTypes.number,
     genres: PropTypes.object,
-    production_countries: PropTypes.array,
+    production_countries: PropTypes.arrayOf(PropTypes.object),
     overview: PropTypes.string,
   }),
 };
