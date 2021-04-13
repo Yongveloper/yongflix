@@ -31,7 +31,6 @@ const Iframe = styled.iframe`
 
 const Video = ({ result: { videos } }) => (
   <>
-    {console.log(videos)}
     <Title>관련 영상</Title>
     {videos.results && videos.results.length > 0 ? (
       <StyledSlider {...settings}>
