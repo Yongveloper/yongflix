@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import Slider from 'react-slick';
 import { TitleStyle } from './DetailTabStyleVariable';
 const Title = styled.div`
@@ -28,12 +29,13 @@ const Iframe = styled.iframe`
   height: 380px;
 `;
 
-const Video = ({ result }) => (
+const Video = ({ result: { videos } }) => (
   <>
+    {console.log(videos)}
     <Title>관련 영상</Title>
-    {result.videos.results && result.videos.results.length > 0 ? (
+    {videos.results && videos.results.length > 0 ? (
       <StyledSlider {...settings}>
-        {result.videos.results.map((video) => (
+        {videos.results.map((video) => (
           <VideoContainer key={video.id}>
             <Iframe src={`https://www.youtube.com/embed/${video.key}`} />
           </VideoContainer>
@@ -44,5 +46,11 @@ const Video = ({ result }) => (
     )}
   </>
 );
+
+Video.propTypes = {
+  videos: PropTypes.shape({
+    results: PropTypes.array.isRequired,
+  }),
+};
 
 export default Video;
