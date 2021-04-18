@@ -130,8 +130,8 @@ const SearchedRemoveBtn = styled(MdClose)`
   cursor: pointer;
 `;
 
-const LS = 'saveHistory';
 const SearchModal = ({ visible, onVisible }) => {
+  const LS = 'saveHistory';
   const { history } = useReactRouter();
   const [term, setTerm] = useState('');
   const [searched, setSearched] = useState(
