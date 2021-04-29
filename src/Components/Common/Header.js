@@ -68,19 +68,17 @@ export default withRouter(({ location: { pathname } }) => {
   }, [visible]);
 
   return (
-    <>
-      <Header>
-        <List>
-          <Item current={pathname === '/'}>
-            <SLink to="/">영화</SLink>
-          </Item>
-          <Item current={pathname === '/tv'}>
-            <SLink to="/tv">TV</SLink>
-          </Item>
-        </List>
-        <Search onClick={onVisible}>검색하기</Search>
-      </Header>
+    <Header>
+      <List>
+        <Item current={pathname === '/'}>
+          <SLink to="/">영화</SLink>
+        </Item>
+        <Item current={pathname === '/tv'}>
+          <SLink to="/tv">TV</SLink>
+        </Item>
+      </List>
+      <Search onClick={onVisible}>검색하기</Search>
       <SearchModal visible={visible} onVisible={onVisible} />
-    </>
+    </Header>
   );
 });
