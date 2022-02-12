@@ -23,7 +23,7 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchMovieData = async () => {
+    (async () => {
       try {
         const {
           data: { results: nowPlaying },
@@ -43,8 +43,7 @@ const Home = () => {
       } finally {
         setLoading(false);
       }
-    };
-    fetchMovieData();
+    })();
   }, []);
 
   const { nowPlaying, upcoming, popular, topRated } = data;
